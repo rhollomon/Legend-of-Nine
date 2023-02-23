@@ -1,3 +1,9 @@
+---
+layout: page
+title: "PAGE-TITLE"
+permalink: /index.md
+---
+
 # Legend of Nine
 
 ## Main page
