@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "PAGE-TITLE"
-permalink: /index.md
+permalink: index.html
 ---
 
 # Legend of Nine
