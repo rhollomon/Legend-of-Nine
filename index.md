@@ -8,7 +8,7 @@ permalink:
 
 ## Main page
 
-#### [Problem Statement](https://rhollomon.github.io/Legend-of-Nine/problem)
+#### [Problem Statement](https://rhollomon.github.io/Legend-of-Nine/problem.md)
 
 #### [User Stories](https://rhollomon.github.io/Legend-of-Nine/userstories)
 
