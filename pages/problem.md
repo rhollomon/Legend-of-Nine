@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "Problem"
+permalink: problem.md
 ---
 
 # Requirements Specification for Legend of Nine
