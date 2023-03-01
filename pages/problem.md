@@ -21,9 +21,13 @@ This game is not currently planned to include 3d object interactions, 3d object 
 ### 1.3 Acronyms, Abbreviations, Definitions
 
 RPG --- Role playing game. A type of video game.
+
 Map --- The in-game world.
+
 2D --- 2-dimensional.
+
 Spritework --- A set of images meant to represent the game's visuals / graphics.
+
 PC --- Personal computer.
 
 ### 1.4 References
