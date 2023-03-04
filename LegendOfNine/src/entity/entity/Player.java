@@ -35,8 +35,10 @@ public class Player extends Entity{
 	 */
 	public void setDefaultValues() {
 		
-		x = 100;
-		y = 100;
+		// Set spawn coordinates
+		x = gp.tileSize * 7;
+		y = gp.tileSize * 3;
+		
 		speed = 4;
 		direction = "down";
 		
