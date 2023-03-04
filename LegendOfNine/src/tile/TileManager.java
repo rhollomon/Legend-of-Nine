@@ -1,7 +1,11 @@
 package tile;
 
 import java.awt.Graphics2D;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import javax.imageio.ImageIO;
 import edu.nmsu.cs.legendofnine.GamePanel;
 
@@ -9,6 +13,7 @@ public class TileManager {
 	
 	GamePanel gp;
 	Tile[] tile;
+	int mapTileNum[][];
 	
 	
 	/**
@@ -17,10 +22,56 @@ public class TileManager {
 	public TileManager(GamePanel gp) {
 		
 		this.gp = gp;
+		
 		tile = new Tile[20]; // Currently supports 20 different types of tiles
+		mapTileNum = new int[12][7]; // For a 12 by 7 map
+		
 		getTileImage();
+		loadMap("/maps/maptest.txt");
 		
 	} // end constructor
+	
+	
+	
+	/**
+	 * Loads map for use by draw().
+	 * 
+	 * @param filePath File location that map is currently stored
+	 */
+	public void loadMap(String filePath) {
+		
+		try {
+			
+			InputStream is = getClass().getResourceAsStream(filePath);
+			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+			
+			int col = 0;
+			int row = 0;
+			
+			while(col < 12 && row < 7) { // for 12 by 7 map
+				
+				String line = br.readLine();
+				
+				while(col < 12) {
+					String numbers[] = line.split(" ");
+					int num = Integer.parseInt(numbers[col]);
+					mapTileNum[col][row] = num;
+					col++;
+				} // end while
+				
+				if(col == 12) {
+					col = 0;
+					row++;
+				} // end if
+				
+			} // end while
+			
+			br.close();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 	
@@ -74,118 +125,38 @@ public class TileManager {
 
 	
 	
+	/**
+	 * Draws currently loaded map.
+	 * 
+	 * @param g2
+	 */
 	public void draw(Graphics2D g2) {
 		
 		// Helps position tiles on map
-		int tileLoc = gp.tileSize;
+		int col = 0;
+		int row = 0;
+		
+		// Position of top left tile
+		int x = gp.tileSize * 2;
+		int y = gp.tileSize * 2;
 		
 		// Draws map TODO currently a placeholder
-		// TODO fix this awful spaghetti code; optimize map drawing
-
-		// Draw top fence
-		g2.drawImage(tile[7].image, tileLoc*2, tileLoc*2, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[6].image, tileLoc*3, tileLoc*2, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[6].image, tileLoc*4, tileLoc*2, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[6].image, tileLoc*5, tileLoc*2, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[6].image, tileLoc*6, tileLoc*2, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[6].image, tileLoc*7, tileLoc*2, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[6].image, tileLoc*8, tileLoc*2, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[6].image, tileLoc*9, tileLoc*2, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[6].image, tileLoc*10, tileLoc*2, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[6].image, tileLoc*11, tileLoc*2, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[6].image, tileLoc*12, tileLoc*2, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[8].image, tileLoc*13, tileLoc*2, gp.tileSize, gp.tileSize, null);
+		while(col < 12 && row < 7) { // for 12 by 7 map
+			
+			int tileNum = mapTileNum[col][row];
+			
+			g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
+			col++;
+			x = x + gp.tileSize;
+			
+			if(col == 12) { // if we've reached end of row
+				col = 0;
+				x = gp.tileSize * 2;
+				row++;
+				y = y + gp.tileSize;
+			} // end if
+			
+		} // end while
 		
-		
-		// Draw bottom fence
-		g2.drawImage(tile[9].image, tileLoc*2, tileLoc*8, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[3].image, tileLoc*3, tileLoc*8, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[3].image, tileLoc*4, tileLoc*8, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[3].image, tileLoc*5, tileLoc*8, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[3].image, tileLoc*6, tileLoc*8, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[3].image, tileLoc*7, tileLoc*8, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[3].image, tileLoc*8, tileLoc*8, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[3].image, tileLoc*9, tileLoc*8, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[3].image, tileLoc*10, tileLoc*8, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[3].image, tileLoc*11, tileLoc*8, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[3].image, tileLoc*12, tileLoc*8, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[10].image, tileLoc*13, tileLoc*8, gp.tileSize, gp.tileSize, null);
-		
-		
-		// Draw left fence
-		g2.drawImage(tile[4].image, tileLoc*2, tileLoc*3, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[4].image, tileLoc*2, tileLoc*4, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[4].image, tileLoc*2, tileLoc*5, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[4].image, tileLoc*2, tileLoc*6, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[4].image, tileLoc*2, tileLoc*7, gp.tileSize, gp.tileSize, null);
-		
-
-		// Draw right fence
-		g2.drawImage(tile[5].image, tileLoc*13, tileLoc*3, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[5].image, tileLoc*13, tileLoc*4, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[5].image, tileLoc*13, tileLoc*5, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[5].image, tileLoc*13, tileLoc*6, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[5].image, tileLoc*13, tileLoc*7, gp.tileSize, gp.tileSize, null);
-		
-		
-		g2.drawImage(tile[0].image, tileLoc*3, tileLoc*3, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[1].image, tileLoc*4, tileLoc*3, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[2].image, tileLoc*5, tileLoc*3, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[1].image, tileLoc*6, tileLoc*3, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[0].image, tileLoc*7, tileLoc*3, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[0].image, tileLoc*8, tileLoc*3, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[2].image, tileLoc*9, tileLoc*3, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[1].image, tileLoc*10, tileLoc*3, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[0].image, tileLoc*11, tileLoc*3, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[1].image, tileLoc*12, tileLoc*3, gp.tileSize, gp.tileSize, null);		
-
-		
-		g2.drawImage(tile[2].image, tileLoc*3, tileLoc*4, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[0].image, tileLoc*4, tileLoc*4, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[1].image, tileLoc*5, tileLoc*4, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[1].image, tileLoc*6, tileLoc*4, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[0].image, tileLoc*7, tileLoc*4, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[2].image, tileLoc*8, tileLoc*4, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[1].image, tileLoc*9, tileLoc*4, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[0].image, tileLoc*10, tileLoc*4, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[0].image, tileLoc*11, tileLoc*4, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[2].image, tileLoc*12, tileLoc*4, gp.tileSize, gp.tileSize, null);
-
-		
-		g2.drawImage(tile[0].image, tileLoc*3, tileLoc*5, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[2].image, tileLoc*4, tileLoc*5, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[2].image, tileLoc*5, tileLoc*5, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[1].image, tileLoc*6, tileLoc*5, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[1].image, tileLoc*7, tileLoc*5, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[0].image, tileLoc*8, tileLoc*5, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[2].image, tileLoc*9, tileLoc*5, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[2].image, tileLoc*10, tileLoc*5, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[0].image, tileLoc*11, tileLoc*5, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[0].image, tileLoc*12, tileLoc*5, gp.tileSize, gp.tileSize, null);
-		
-
-		g2.drawImage(tile[0].image, tileLoc*3, tileLoc*6, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[1].image, tileLoc*4, tileLoc*6, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[2].image, tileLoc*5, tileLoc*6, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[1].image, tileLoc*6, tileLoc*6, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[0].image, tileLoc*7, tileLoc*6, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[0].image, tileLoc*8, tileLoc*6, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[2].image, tileLoc*9, tileLoc*6, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[1].image, tileLoc*10, tileLoc*6, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[0].image, tileLoc*11, tileLoc*6, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[1].image, tileLoc*12, tileLoc*6, gp.tileSize, gp.tileSize, null);	
-
-		
-		g2.drawImage(tile[2].image, tileLoc*3, tileLoc*7, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[0].image, tileLoc*4, tileLoc*7, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[1].image, tileLoc*5, tileLoc*7, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[1].image, tileLoc*6, tileLoc*7, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[0].image, tileLoc*7, tileLoc*7, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[2].image, tileLoc*8, tileLoc*7, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[1].image, tileLoc*9, tileLoc*7, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[0].image, tileLoc*10, tileLoc*7, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[0].image, tileLoc*11, tileLoc*7, gp.tileSize, gp.tileSize, null);
-		g2.drawImage(tile[2].image, tileLoc*12, tileLoc*7, gp.tileSize, gp.tileSize, null);
-
 	} // end draw
 }
