@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import entity.Player;
+import tile.TileManager;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -28,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable{
 	int FPS = 60;
 	
 	
+	TileManager tileM = new TileManager(this);
 	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;
 	Player player = new Player(this, keyH); // Make new player from Player class
@@ -109,7 +112,13 @@ public class GamePanel extends JPanel implements Runnable{
 
 		Graphics2D g2 = (Graphics2D)g;
 		
+		// Draw map BELOW player
+		tileM.draw(g2);
+		
+		// Draw player
 		player.draw(g2);
+		
+		//TODO for tiles that overlap player, call tileM.draw here
 
 		g2.dispose();
 	} // end paintComponent

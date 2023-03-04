@@ -1,5 +1,6 @@
 package tile;
 
+import java.awt.Graphics2D;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import edu.nmsu.cs.legendofnine.GamePanel;
@@ -16,7 +17,7 @@ public class TileManager {
 	public TileManager(GamePanel gp) {
 		
 		this.gp = gp;
-		tile = new Tile[10]; // Currently supports 10 different types of tiles
+		tile = new Tile[20]; // Currently supports 20 different types of tiles
 		getTileImage();
 		
 	} // end constructor
@@ -53,9 +54,30 @@ public class TileManager {
 			tile[6] = new Tile();
 			tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/fencetop.png"));
 			
+			tile[7] = new Tile();
+			tile[7].image = ImageIO.read(getClass().getResourceAsStream("/tiles/fence_top_left.png"));
+			
+			tile[8] = new Tile();
+			tile[8].image = ImageIO.read(getClass().getResourceAsStream("/tiles/fence_top_right.png"));
+			
+			tile[9] = new Tile();
+			tile[9].image = ImageIO.read(getClass().getResourceAsStream("/tiles/fence_bottom_left.png"));
+			
+			tile[10] = new Tile();
+			tile[10].image = ImageIO.read(getClass().getResourceAsStream("/tiles/fence_bottom_right.png"));
+			
 			
 		} catch(IOException e) {
 			e.printStackTrace();
-		}
-	} // end getTileImage
+		} // end catch
+	} // end 
+
+	
+	
+	public void draw(Graphics2D g2) {
+		
+		// Draw image of a single tile in position 0,0
+		g2.drawImage(tile[0].image, 0, 0, gp.tileSize, gp.tileSize, null);
+		
+	} // end draw
 }
