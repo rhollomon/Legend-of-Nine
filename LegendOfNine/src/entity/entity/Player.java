@@ -74,31 +74,36 @@ public class Player extends Entity{
 	 */
 	public void update() {
 		
-		if(keyH.upPressed == true) { // If W is pressed
-			direction = "up";
-			y -= speed;
-		}
-		if(keyH.downPressed == true) { // if S is pressed
-			direction = "down";
-			y += speed;
-		}
-		if(keyH.leftPressed == true) { // if A is pressed
-			direction = "left";
-			x -= speed;
-		}
-		if(keyH.rightPressed == true) { // If D is pressed
-			direction = "right";
-			x += speed;
-		}
-		
-		// Tells sprite to go to the next animation every 11 frames
-		spriteCounter++;
-		if(spriteCounter > 10) {
-			if(spriteNum == 1) spriteNum = 2;
-			else if(spriteNum == 2) spriteNum = 1;
+		if(keyH.upPressed == true || keyH.downPressed == true 
+	    || keyH.leftPressed == true || keyH.rightPressed == true) {
 			
-			spriteCounter = 0;
-		}
+			if(keyH.upPressed == true) { // If W is pressed
+	   			direction = "up";
+				y -= speed;
+			}
+			if(keyH.downPressed == true) { // if S is pressed
+				direction = "down";
+				y += speed;
+			}
+			if(keyH.leftPressed == true) { // if A is pressed
+				direction = "left";
+				x -= speed;
+			}
+			if(keyH.rightPressed == true) { // If D is pressed
+				direction = "right";
+				x += speed;
+			}
+			
+			// Tells sprite to go to the next animation every 11 frames
+			spriteCounter++;
+			if(spriteCounter > 10) {
+				if(spriteNum == 1) spriteNum = 2;
+				else if(spriteNum == 2) spriteNum = 1;
+				
+				spriteCounter = 0;
+			} // end animation check
+			
+		} // end if
 		
 	} // end update
 	
