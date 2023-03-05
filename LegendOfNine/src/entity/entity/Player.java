@@ -13,6 +13,8 @@ public class Player extends Entity{
 	GamePanel gp;
 	KeyHandler keyH;
 	
+	public final int screenX;
+	public final int screenY;
 	/**
 	 * Constructor for Player class
 	 * 
@@ -23,6 +25,10 @@ public class Player extends Entity{
 		
 		this.gp = gp;
 		this.keyH = keyH;
+
+		screenX = gp.screenWidth/2 - (gp.tileSize/2);
+		screenY = gp.screenHeight/2 - (gp.tileSize/2);
+		
 		setDefaultValues();
 		getPlayerImage();
 		
@@ -36,8 +42,8 @@ public class Player extends Entity{
 	public void setDefaultValues() {
 		
 		// Set spawn coordinates
-		x = gp.tileSize * 7;
-		y = gp.tileSize * 3;
+		worldX = gp.tileSize * 7;
+		worldY = gp.tileSize * 3;
 		
 		speed = 4;
 		direction = "down";
@@ -81,19 +87,19 @@ public class Player extends Entity{
 			
 			if(keyH.upPressed == true) { // If W is pressed
 	   			direction = "up";
-				y -= speed;
+				worldY -= speed;
 			}
 			if(keyH.downPressed == true) { // if S is pressed
 				direction = "down";
-				y += speed;
+				worldY += speed;
 			}
 			if(keyH.leftPressed == true) { // if A is pressed
 				direction = "left";
-				x -= speed;
+				worldX -= speed;
 			}
 			if(keyH.rightPressed == true) { // If D is pressed
 				direction = "right";
-				x += speed;
+				worldX += speed;
 			}
 			
 			// Tells sprite to go to the next animation every 11 frames
@@ -155,7 +161,7 @@ public class Player extends Entity{
 			
 		} // end switch
 		
-		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+		g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 		
 	} // end draw
 

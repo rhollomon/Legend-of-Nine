@@ -23,17 +23,22 @@ public class GamePanel extends JPanel implements Runnable{
 	final int maxScreenCol = 16;   // Number of tiles that fit on the game screen horizontally
 	final int maxScreenRow = 12;   // Number of tiles that fit on the game screen vertically
 	
-	final int screenWidth = tileSize * maxScreenCol;  // 1024 pixels
-	final int screenHeight = tileSize * maxScreenRow; // 768 pixels
+	public final int screenWidth = tileSize * maxScreenCol;  // 1024 pixels
+	public final int screenHeight = tileSize * maxScreenRow; // 768 pixels
+
+	//World settings (12 x 7 map)
+	public final int maxWorldCol = 12; 
+	public final int maxWorldRow = 7;
+	public final int worldWidth = tileSize * maxWorldCol;
+	public final int worldHeight = tileSize * maxWorldRow;
 
 	// Frames per second
 	int FPS = 60;
 	
-	
 	TileManager tileM = new TileManager(this);
 	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;
-	Player player = new Player(this, keyH); // Make new player from Player class
+	public Player player = new Player(this, keyH); // Make new player from Player class
 	
 	
 	/**
@@ -122,5 +127,5 @@ public class GamePanel extends JPanel implements Runnable{
 
 		g2.dispose();
 	} // end paintComponent
-
+	
 } // end GamePanel

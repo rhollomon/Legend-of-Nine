@@ -24,7 +24,7 @@ public class TileManager {
 		this.gp = gp;
 		
 		tile = new Tile[20]; // Currently supports 20 different types of tiles
-		mapTileNum = new int[12][7]; // For a 12 by 7 map
+		mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow]; //determined by World Settings in GamePanel.java
 		
 		getTileImage();
 		loadMap("/maps/maptest.txt");
@@ -48,18 +48,18 @@ public class TileManager {
 			int col = 0;
 			int row = 0;
 			
-			while(col < 12 && row < 7) { // for 12 by 7 map
+			while(col < gp.maxWorldCol && row < gp.maxWorldRow) { //determined by World Settings in GamePanel.java
 				
 				String line = br.readLine();
 				
-				while(col < 12) {
+				while(col < gp.maxWorldCol) {
 					String numbers[] = line.split(" ");
 					int num = Integer.parseInt(numbers[col]);
 					mapTileNum[col][row] = num;
 					col++;
 				} // end while
 				
-				if(col == 12) {
+				if(col == gp.maxWorldCol) {
 					col = 0;
 					row++;
 				} // end if
@@ -133,27 +133,35 @@ public class TileManager {
 	public void draw(Graphics2D g2) {
 		
 		// Helps position tiles on map
-		int col = 0;
-		int row = 0;
+		int worldCol = 0;
+		int worldRow = 0;
 		
-		// Position of top left tile
-		int x = gp.tileSize * 2;
-		int y = gp.tileSize * 2;
-		
-		// Draws map TODO currently a placeholder
-		while(col < 12 && row < 7) { // for 12 by 7 map
+		// Draws map
+		while(worldCol < gp.maxWorldCol && worldRow < gp.maxWorldRow) { //determined by World Settings in GamePanel.java
 			
-			int tileNum = mapTileNum[col][row];
+			int tileNum = mapTileNum[worldCol][worldRow];
 			
-			g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
-			col++;
-			x = x + gp.tileSize;
+			//Position of the player's character on screen
+			int worldX = worldCol * gp.tileSize;
+			int worldY = worldRow * gp.tileSize;
 			
-			if(col == 12) { // if we've reached end of row
-				col = 0;
-				x = gp.tileSize * 2;
-				row++;
-				y = y + gp.tileSize;
+			//Used to draw the tiles where the player will always be shown at the
+			//center of the screen
+			int screenX = worldX - gp.player.worldX + gp.player.screenX; 
+			int screenY = worldY - gp.player.worldY + gp.player.screenY;
+			
+			//Ensures tiles outside the FOV of the player are not drawn 
+			if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX && 
+				worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
+				worldY + gp.tileSize > gp.player.worldY - gp.player.screenY && 
+				worldY - gp.tileSize < gp.player.worldY + gp.player.screenY){
+					g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+				} // end if
+			worldCol++;
+			
+			if(worldCol == gp.maxWorldCol) { // if we've reached end of row
+			worldCol = 0;
+			worldRow++;
 			} // end if
 			
 		} // end while
