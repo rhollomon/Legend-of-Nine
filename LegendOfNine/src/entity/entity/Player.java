@@ -30,9 +30,9 @@ public class Player extends Entity{
 		screenX = gp.screenWidth/2 - (gp.tileSize/2);
 		screenY = gp.screenHeight/2 - (gp.tileSize/2);
 
-		/**
+		/*
 		* Collison detection - solid area of player entity
-			TODO adjust for mouse sprite
+		*	TODO adjust for mouse sprite
 		*/ 
 		solidArea = new Rectangle();
 		solidArea.x = 8;
@@ -98,19 +98,30 @@ public class Player extends Entity{
 			
 			if(keyH.upPressed == true) { // If W is pressed
 	   			direction = "up";
-				worldY -= speed;
 			}
 			if(keyH.downPressed == true) { // if S is pressed
 				direction = "down";
-				worldY += speed;
 			}
 			if(keyH.leftPressed == true) { // if A is pressed
 				direction = "left";
-				worldX -= speed;
 			}
 			if(keyH.rightPressed == true) { // If D is pressed
 				direction = "right";
-				worldX += speed;
+			}
+
+			// Check collision
+			collisionOn = false;
+			gp.cChecker.checkTile(this);
+
+			// If collisionOn is false, player can move
+			if (collisionOn == false){
+				
+				switch(direction){
+				case "up":    worldY -= speed;  break;
+				case "down":  worldY += speed;  break;
+				case "left":  worldX -= speed;  break;
+				case "right": worldX += speed;  break;
+				}
 			}
 			
 			// Tells sprite to go to the next animation every 11 frames
