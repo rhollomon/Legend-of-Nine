@@ -12,8 +12,8 @@ import edu.nmsu.cs.legendofnine.GamePanel;
 public class TileManager {
 	
 	GamePanel gp;
-	Tile[] tile;
-	int mapTileNum[][];
+	public Tile[] tile;
+	public int mapTileNum[][];
 	
 	
 	/**
