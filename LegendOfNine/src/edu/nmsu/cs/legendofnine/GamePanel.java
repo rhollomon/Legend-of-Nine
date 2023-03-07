@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import entity.Player;
+import object.SuperObject;
 import tile.TileManager;
 
 import java.awt.Graphics;
@@ -39,8 +40,9 @@ public class GamePanel extends JPanel implements Runnable{
 	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;
 	public CollisionChecker cChecker = new CollisionChecker(this); // Instantiate Collision Checker
+	public AssetSetter aSetter = new AssetSetter(this); // place objects on the map 
 	public Player player = new Player(this, keyH); // Make new player from Player class
-	
+	public SuperObject obj[] = new SuperObject[10];
 	
 	/**
 	 * Constructor for GamePanel
@@ -53,7 +55,9 @@ public class GamePanel extends JPanel implements Runnable{
 		this.setFocusable(true);
 	} // end constructor
 	
-	
+	public void setupGame() {
+		aSetter.setObject();
+	}
 	
 	public void startGameThread() {
 		gameThread = new Thread(this);
@@ -120,6 +124,14 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		// Draw map BELOW player
 		tileM.draw(g2);
+		
+		
+		// draw objects
+		for(int i = 0; i < obj.length; i++) {
+			if(obj[i] != null) {
+				obj[i].draw(g2, this);
+			}
+		}
 		
 		// Draw player
 		player.draw(g2);
