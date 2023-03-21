@@ -53,4 +53,14 @@ Acceptance Test: Will have a functional end game window
 
 ## Brock Middleton
 
+As a player, I would like to be able to walk into walls without clipping through them and crashing the game thread. (i.e. Collision Detection)
+
+Elaboration: Users should not be able to walk through walls and other solid objects. This is not conducive to a successful game structure, and it also crashes the active game thread when a player walks out of the defined tile-space. Once collision is established, values must be tweaked to account for game models. 
+
+Constraints: None
+
+Est. Hours: 2-3 human hrs. 
+
+Acceptance Test: Successful collision on all wall structures in the game environment. No clipping of the sprite model or wall model present. 
+
 ## Jason Weston
