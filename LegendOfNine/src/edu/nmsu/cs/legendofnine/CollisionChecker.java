@@ -80,4 +80,102 @@ public class CollisionChecker {
 
         } // switch
     } // checkTile
+
+    /**
+     * Check whether player is colliding with object via 'intersects'
+     * 
+     * @param entity entity>player
+     * @param player true for player, false for non-player
+     * @return index of object 
+     */
+    public int checkObject(Entity entity, boolean player) {
+
+        // Check if player is colliding with object, if so, return index of object
+
+        int index = 999;
+
+        for (int i = 0; i < gp.obj.length; i++) {
+            
+            if (gp.obj[i] != null) {
+
+                // Get entity solid aera pos
+                entity.solidArea.x = entity.worldX + entity.solidArea.x;
+                entity.solidArea.y = entity.worldY + entity.solidArea.y;
+
+                // Get object solid area pos
+                gp.obj[i].solidArea.x = gp.obj[i].worldX + gp.obj[i].solidArea.x;
+                gp.obj[i].solidArea.y = gp.obj[i].worldY + gp.obj[i].solidArea.y;
+
+                // Check direction of moving entity
+                switch(entity.direction) {
+                    case "up":
+                        entity.solidArea.y -= entity.speed;
+                        if (entity.solidArea.intersects(gp.obj[i].solidArea)) {
+                            // If collision of object is true, set entity collision true
+                            if (gp.obj[i].collision == true) {  
+                                entity.collisionOn = true;
+                            }
+                            // If entity is a player, they can pickup objects
+                            if (player == true) { 
+                                index = i;
+                            }
+                        }
+                    break;
+
+                    case "down":
+                        entity.solidArea.y += entity.speed;
+                        if (entity.solidArea.intersects(gp.obj[i].solidArea)) {
+                            // If collision of object is true, set entity collision true
+                            if (gp.obj[i].collision == true) {  
+                                entity.collisionOn = true;
+                            }
+                            // If entity is a player, they can pickup objects
+                            if (player == true) { 
+                                index = i;
+                            }
+                        }    
+                    break;
+
+                    case "left":
+                        entity.solidArea.x -= entity.speed;
+                        if (entity.solidArea.intersects(gp.obj[i].solidArea)) {
+                            // If collision of object is true, set entity collision true
+                            if (gp.obj[i].collision == true) {  
+                                entity.collisionOn = true;
+                            }
+                            // If entity is a player, they can pickup objects
+                            if (player == true) { 
+                                index = i;
+                            }
+                        }
+                    break;
+
+                    case "right":
+                        entity.solidArea.x += entity.speed;
+                        if (entity.solidArea.intersects(gp.obj[i].solidArea)) {
+                            // If collision of object is true, set entity collision true
+                            if (gp.obj[i].collision == true) {  
+                                entity.collisionOn = true;
+                            }
+                            // If entity is a player, they can pickup objects
+                            if (player == true) { 
+                                index = i;
+                            }
+                        }  
+                    break;
+                } // switch
+
+                entity.solidArea.x = entity.solidAreaDefaultX;
+                entity.solidArea.y = entity.solidAreaDefaultY;
+                gp.obj[i].solidArea.x = gp.obj[i].solidAreaDefaultX;
+                gp.obj[i].solidArea.y = gp.obj[i].solidAreaDefaultY;
+
+            } // if
+
+        } // for
+
+        return index;
+    }// checkObject
+
+
 } // CollisionChecker
