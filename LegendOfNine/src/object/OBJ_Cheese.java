@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 public class OBJ_Cheese extends SuperObject{
 
 	public OBJ_Cheese() {
-		name = "Key";
+		name = "Cheese";
 		try {
 			image = ImageIO.read(getClass().getResourceAsStream("/objects/cheese2.png"));
 		}catch(IOException e) {
