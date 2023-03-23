@@ -16,6 +16,8 @@ public class Player extends Entity{
 	
 	public final int screenX;
 	public final int screenY;
+
+	int numCheese = 0; // # of cheese player has picked up
 	/**
 	 * Constructor for Player class
 	 * 
@@ -32,11 +34,13 @@ public class Player extends Entity{
 
 		/*
 		* Collison detection - solid area of player entity
-		*	TODO adjust for mouse sprite
 		*/ 
 		solidArea = new Rectangle();
 		solidArea.x = 8;
 		solidArea.y = 16;
+		// Copy default solid area to new instance, for OBJECT collision
+		solidAreaDefaultX = solidArea.x;
+		solidAreaDefaultY = solidArea.y;
 		solidArea.width = 32;
 		solidArea.height = 32;
 		
@@ -112,6 +116,10 @@ public class Player extends Entity{
 			// Check collision
 			collisionOn = false;
 			gp.cChecker.checkTile(this);
+			
+			// Check object collision
+			int objIndex = gp.cChecker.checkObject(this, true);
+			pickupObject(objIndex);
 
 			// If collisionOn is false, player can move
 			if (collisionOn == false){
@@ -136,6 +144,39 @@ public class Player extends Entity{
 		} // end if
 		
 	} // end update
+
+	/**
+	 * Given index of object, get object name and perform relative action
+	 * 
+	 * @param index gp index of object
+	 */
+	public void pickupObject(int i) {
+
+		if (i != 999) {
+
+			String objectName = gp.obj[i].name;
+
+			switch (objectName) {
+				case "Cheese":
+					numCheese++; 
+					gp.obj[i] = null;
+
+					System.out.println("Cheese:"+numCheese);
+				break;
+
+				case "Chest":
+					System.out.println("Chest");
+				break;
+
+				case "Door":
+					if (numCheese > 0) {
+						gp.obj[i] = null;
+						numCheese--;
+					}
+				break;
+			}
+		}
+	} // end pickupObject
 	
 	
 	
