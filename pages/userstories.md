@@ -99,3 +99,39 @@ Est. Hours: 2-3 human hrs.
 Acceptance Test: Successful collision on all wall structures in the game environment. No clipping of the sprite model or wall model present. 
 
 ## Jason Weston
+
+### User Story #1: Object Creation
+
+As a developer, I want to implement the creation of objects in our game where each object has its own unique sprite and is visible to the player.
+
+Elaboration: In creating objects, we must have an object that is an individual entity and the player can see the object in hopes of interacting with it.
+
+Constraints: Only 10 objects are currently allowed, and it will be difficult to figure out how to handle objects individually.
+
+Est. Hours: 1-2 human hrs. 
+
+Acceptance Test: Some objects are finalized, while we have room to include other objects.
+
+### User Story #2: Object Interaction
+
+As a developer, I want to allow players to interact with each object in a unique way.
+
+Elaboration: Each object should have it's own traits, where some will be picked up and some will just be altered. 
+
+Constraints: Again, 10 objects can only be accessed in each instance so we must minimize the amount of objects in a single game instance.
+
+Est. Hours: 2 human hrs.
+
+Acceptance Test: Pieces of cheese can be picked up, doors and chests can be opened.
+
+### User Story #3: Object Placement
+
+As a developer, I want to place objects throughout the world of our game in a meaningful way. 
+
+Elaboration: With our team we need to decide where objects should be placed in the final product. 
+
+Constraints: Depending on how we create rooms and allow for different game states some items will have to be placed further away from others to ensure that only 10 items exist.
+
+Est. Hours: 1 human hr.
+
+Acceptance Test: All objects are meaningfully placed and allow for a linear gameplay. 
