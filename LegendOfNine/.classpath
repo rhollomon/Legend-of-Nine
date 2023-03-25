@@ -3,6 +3,7 @@
 	<classpathentry kind="src" path="res"/>
 	<classpathentry kind="src" path="src/entity"/>
 	<classpathentry excluding="entity/" kind="src" path="src"/>
+	<classpathentry excluding="res/|src/entity/|src/" kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>

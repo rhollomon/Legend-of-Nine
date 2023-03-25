@@ -19,7 +19,7 @@ public class Player extends Entity{
 	public final int screenX;
 	public final int screenY;
 
-	int numCheese = 0; // # of cheese player has picked up
+	public int numCheese = 0; // # of cheese player has picked up
 	/**
 	 * Constructor for Player class
 	 * 
@@ -174,12 +174,18 @@ public class Player extends Entity{
 					numCheese++; 
 					gp.obj[i] = null;
 
-					System.out.println("Cheese:"+numCheese);
+					//System.out.println("Cheese:"+numCheese);
 				break;
 
 				case "Chest":
 					//gp.playSE(2); // make sure chest sound is index 2
-					System.out.println("Chest");
+										
+					if(numCheese < 2) {
+						gp.ui.showMessage("You need "+(2-numCheese)+" more cheese", null);
+					} else {
+						gp.ui.gameFinished = true;
+					}
+						
 				break;
 
 				case "Door":
@@ -188,12 +194,15 @@ public class Player extends Entity{
 						gp.obj[i] = null;
 						numCheese--;
 					}
+					gp.ui.showMessage("Opened the door!", null);
 				break;
 
 				case "Boots": 
 					//gp.playSE(4); // make sure powerup sound is index 4
 					speed+=1;
 					gp.obj[i]=null;
+					
+					gp.ui.showMessage("Picked up boots! (+1 speed)", "boots");
 					break;
 			}
 		}

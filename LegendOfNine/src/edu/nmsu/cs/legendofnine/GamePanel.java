@@ -34,6 +34,7 @@ public class GamePanel extends JPanel implements Runnable{
 	// Frames per second
 	int FPS = 60;
 	
+	// SYSTEM
 	TileManager tileM = new TileManager(this);
 	KeyHandler keyH = new KeyHandler();
 	Sound sound = new Sound();
@@ -41,10 +42,13 @@ public class GamePanel extends JPanel implements Runnable{
 	public CollisionChecker cChecker = new CollisionChecker(this); // Instantiate Collision Checker
 	public AssetSetter aSetter = new AssetSetter(this); // place objects on the map 
 	Thread gamThread;
+	public UI ui = new UI(this);
 
 	// Entity and Object
 	public Player player = new Player(this, keyH); // Make new player from Player class
 	public SuperObject obj[] = new SuperObject[10];
+	
+	
 	
 	/**
 	 * Constructor for GamePanel
@@ -57,11 +61,15 @@ public class GamePanel extends JPanel implements Runnable{
 		this.setFocusable(true);
 	} // end constructor
 	
+	
+	
 	public void setupGame() {
 		aSetter.setObject();
 
 		//playMusic(0);
 	}
+	
+	
 	
 	public void startGameThread() {
 		gameThread = new Thread(this);
@@ -148,6 +156,9 @@ public class GamePanel extends JPanel implements Runnable{
 
 		//TODO for tiles that overlap player, call tileM.draw here
 		
+		// UI
+		ui.draw(g2);
+		
 		// DEBUG
 		if (keyH.checkDrawTime == true) {
 			long drawEnd = System.nanoTime();
@@ -160,6 +171,8 @@ public class GamePanel extends JPanel implements Runnable{
 		g2.dispose();
 	} // end paintComponent
 
+	
+	
 	// This method plays musics and loops it
 	public void playMusic(int i) {
 
@@ -168,12 +181,16 @@ public class GamePanel extends JPanel implements Runnable{
 		sound.loop();
 	}
 
+	
+	
 	// this method stops msuic
 	public void stopMusic() {
 
 		sound.stop();
 	}
 
+	
+	
 	// this method plays sound effects
 	public void playSE(int i) {
 
