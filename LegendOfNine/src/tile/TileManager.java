@@ -1,12 +1,15 @@
 package tile;
 
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
+
+import edu.nmsu.UtilityTool;
 import edu.nmsu.cs.legendofnine.GamePanel;
 
 public class TileManager {
@@ -82,56 +85,35 @@ public class TileManager {
 	 */
 	public void getTileImage() {
 		
-		try {
-			
-			tile[0] = new Tile();
-			tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass1.png"));
-			
-			tile[1] = new Tile();
-			tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass2.png"));
-			
-			tile[2] = new Tile();
-			tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass3.png"));
-			
-			tile[3] = new Tile();
-			tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/fencebottom.png"));
-			tile[3].collision = true;
-			
-			tile[4] = new Tile();
-			tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/fenceleft.png"));
-			tile[4].collision = true;
-			
-			tile[5] = new Tile();
-			tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/fenceright.png"));
-			tile[5].collision = true;
-			
-			tile[6] = new Tile();
-			tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/fencetop.png"));
-			tile[6].collision = true;
-			
-			tile[7] = new Tile();
-			tile[7].image = ImageIO.read(getClass().getResourceAsStream("/tiles/fence_top_left.png"));
-			tile[7].collision = true;
-			
-			tile[8] = new Tile();
-			tile[8].image = ImageIO.read(getClass().getResourceAsStream("/tiles/fence_top_right.png"));
-			tile[8].collision = true;
-			
-			tile[9] = new Tile();
-			tile[9].image = ImageIO.read(getClass().getResourceAsStream("/tiles/fence_bottom_left.png"));
-			tile[9].collision = true;
-			
-			tile[10] = new Tile();
-			tile[10].image = ImageIO.read(getClass().getResourceAsStream("/tiles/fence_bottom_right.png"));
-			tile[10].collision = true;
-			
-			
-		} catch(IOException e) {
-			e.printStackTrace();
-		} // end catch
+
+		setup(0, "grass1", false);
+		setup(1, "grass2", false);
+		setup(2, "grass3", false);
+		setup(3, "fencebottom", true);
+		setup(4, "fenceleft", true);
+		setup(5, "fenceright", true);
+		setup(6, "fencetop", true);
+		setup(7, "fence_top_left", true);
+		setup(8, "fence_top_right", true);
+		setup(9, "fence_bottom_left", true);
+		setup(10, "fence_bottom_right", true);
+
 	} // end 
 
-	
+	public void setup(int index, String imageName, boolean collision) {
+
+		UtilityTool uTool = new UtilityTool();
+
+		try {
+			tile[index] = new Tile();
+			tile[index].image = ImageIO.read(getClass().getResourceAsStream("/tiles/"+imageName+".png"));
+			tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
+			tile[index].collision = collision;
+
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	/**
 	 * Draws currently loaded map.

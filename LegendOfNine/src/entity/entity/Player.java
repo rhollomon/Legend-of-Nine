@@ -3,9 +3,11 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.nio.Buffer;
 
 import javax.imageio.ImageIO;
 
+import edu.nmsu.UtilityTool;
 import edu.nmsu.cs.legendofnine.GamePanel;
 import edu.nmsu.cs.legendofnine.KeyHandler;
 
@@ -73,25 +75,35 @@ public class Player extends Entity{
 	 * @throws IOException
 	 */
 	public void getPlayerImage() {
-		
-		try {
-			
-			up1 = ImageIO.read(getClass().getResourceAsStream("/player/player_up_1.png"));
-			up2 = ImageIO.read(getClass().getResourceAsStream("/player/player_up_2.png"));
-			down1 = ImageIO.read(getClass().getResourceAsStream("/player/player_down_1.png"));
-			down2 = ImageIO.read(getClass().getResourceAsStream("/player/player_down_2.png"));
-			left1 = ImageIO.read(getClass().getResourceAsStream("/player/player_left_1.png"));
-			left2 = ImageIO.read(getClass().getResourceAsStream("/player/player_left_2.png"));
-			right1 = ImageIO.read(getClass().getResourceAsStream("/player/player_right_1.png"));
-			right2 = ImageIO.read(getClass().getResourceAsStream("/player/player_right_2.png"));
-			
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
+	
+		up1 = setup("player_up_1");
+		up2 = setup("player_up_2");
+		down1 = setup("player_down_1");
+		down2 = setup("player_down_2");
+		left1 =setup("player_left_1");
+		left2 = setup("player_left_2");
+		right1 = setup("player_right_1");
+		right2 = setup("player_right_2");
+
 	} // end getPlayerImage
 	
 	
-	
+	public BufferedImage setup(String imageName) {
+
+		UtilityTool uTool = new UtilityTool();
+		BufferedImage image = null;
+
+		try {
+			image = ImageIO.read(getClass().getResourceAsStream("/player/"+imageName+".png"));
+			image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return image;
+	}
+
+
 	/**
 	 * Update player position upon keys being pressed
 	 */
@@ -158,6 +170,7 @@ public class Player extends Entity{
 
 			switch (objectName) {
 				case "Cheese":
+					//gp.playSE(1); // make sure cheese sound is index 1
 					numCheese++; 
 					gp.obj[i] = null;
 
@@ -165,15 +178,23 @@ public class Player extends Entity{
 				break;
 
 				case "Chest":
+					//gp.playSE(2); // make sure chest sound is index 2
 					System.out.println("Chest");
 				break;
 
 				case "Door":
+					//gp.playSE(3); // make sure door sound is index 3
 					if (numCheese > 0) {
 						gp.obj[i] = null;
 						numCheese--;
 					}
 				break;
+
+				case "Boots": 
+					//gp.playSE(4); // make sure powerup sound is index 4
+					speed+=1;
+					gp.obj[i]=null;
+					break;
 			}
 		}
 	} // end pickupObject
@@ -224,7 +245,7 @@ public class Player extends Entity{
 			
 		} // end switch
 		
-		g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+		g2.drawImage(image, screenX, screenY, null);
 		
 	} // end draw
 

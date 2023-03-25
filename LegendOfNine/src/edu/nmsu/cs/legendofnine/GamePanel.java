@@ -30,17 +30,19 @@ public class GamePanel extends JPanel implements Runnable{
 	//World settings (12 x 7 map)
 	public final int maxWorldCol = 12; 
 	public final int maxWorldRow = 7;
-	public final int worldWidth = tileSize * maxWorldCol;
-	public final int worldHeight = tileSize * maxWorldRow;
 
 	// Frames per second
 	int FPS = 60;
 	
 	TileManager tileM = new TileManager(this);
 	KeyHandler keyH = new KeyHandler();
+	Sound sound = new Sound();
 	Thread gameThread;
 	public CollisionChecker cChecker = new CollisionChecker(this); // Instantiate Collision Checker
 	public AssetSetter aSetter = new AssetSetter(this); // place objects on the map 
+	Thread gamThread;
+
+	// Entity and Object
 	public Player player = new Player(this, keyH); // Make new player from Player class
 	public SuperObject obj[] = new SuperObject[10];
 	
@@ -57,6 +59,8 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	public void setupGame() {
 		aSetter.setObject();
+
+		playMusic(0);
 	}
 	
 	public void startGameThread() {
@@ -121,6 +125,12 @@ public class GamePanel extends JPanel implements Runnable{
 		super.paintComponent(g);
 
 		Graphics2D g2 = (Graphics2D)g;
+
+		// DEBUG
+		long drawStart = 0;
+		if(keyH.checkDrawTime == true) {
+			drawStart = System.nanoTime();
+		}
 		
 		// Draw map BELOW player
 		tileM.draw(g2);
@@ -135,10 +145,40 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		// Draw player
 		player.draw(g2);
-		
+
 		//TODO for tiles that overlap player, call tileM.draw here
+		
+		// DEBUG
+		if (keyH.checkDrawTime == true) {
+			long drawEnd = System.nanoTime();
+			long passed = drawEnd - drawStart;
+			g2.setColor(Color.white);
+			g2.drawString("Draw Time: " + passed, 10, 400);
+			System.out.println("Draw Time: "+passed);
+		}
 
 		g2.dispose();
 	} // end paintComponent
+
+	// This method plays musics and loops it
+	public void playMusic(int i) {
+
+		sound.setFile(i);
+		sound.play();
+		sound.loop();
+	}
+
+	// this method stops msuic
+	public void stopMusic() {
+
+		sound.stop();
+	}
+
+	// this method plays sound effects
+	public void playSE(int i) {
+
+		sound.setFile(i);
+		sound.play();
+	}
 	
 } // end GamePanel
