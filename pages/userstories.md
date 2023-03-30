@@ -10,7 +10,7 @@ permalink: userstories
 
 ### User Story #1: World and Map
 
-As a game developer, I would like to design and implement an overworld map.
+As a game developer, I would like to design and implement an overworld map to give users a meaningful exploration experience.
 
 Elaboration: Implementation of the primary overworld map and "zones" the player character moves around in. Primarily visual, but may also have gameplay elements integrated, such as puzzles. Generates from text file.
 
@@ -34,7 +34,7 @@ Acceptance Test: Style, quality, and visual approach is approved by all team mem
 
 ## User Story #3: Animation
 
-As an artist, I would like to create custom animations for the player character, monsters, and items in the game world.
+As an artist, I would like to create custom animations for the player character, monsters, and items in the game world to make our game more visually interesting.
 
 Elaboration: Animation loops on sprites allow for a far more vibrant look and feel of gameplay.
 
