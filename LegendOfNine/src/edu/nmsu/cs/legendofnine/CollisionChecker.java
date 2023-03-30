@@ -177,5 +177,140 @@ public class CollisionChecker {
         return index;
     }// checkObject
 
+    /**
+     * Check collision between an Player with NPC
+     * 
+     * @param entity entity>player
+     */
+    public int checkEntity(Entity entity, Entity[] target){
+        // Check if player is colliding with object, if so, return index of object
+
+        int index = 999;
+
+        for (int i = 0; i < target.length; i++) {
+            
+            if (target[i] != null) {
+
+                // Get entity solid aera pos
+                entity.solidArea.x = entity.worldX + entity.solidArea.x;
+                entity.solidArea.y = entity.worldY + entity.solidArea.y;
+
+                // Get object solid area pos
+                target[i].solidArea.x = target[i].worldX + target[i].solidArea.x;
+                target[i].solidArea.y = target[i].worldY + target[i].solidArea.y;
+
+                // Check direction of moving entity
+                switch(entity.direction) {
+                    case "up":
+                        entity.solidArea.y -= entity.speed;
+                        if (entity.solidArea.intersects(target[i].solidArea)) {
+                            // If collision of object is true, set entity collision true  
+                            entity.collisionOn = true;
+                            // If entity is a player, they can pickup objects
+                            index = i;
+                        }
+                    break;
+
+                    case "down":
+                        entity.solidArea.y += entity.speed;
+                        if (entity.solidArea.intersects(target[i].solidArea)) {
+                             // If collision of object is true, set entity collision true  
+                            entity.collisionOn = true;
+                             // If entity is a player, they can pickup objects
+                            index = i;
+                        }    
+                    break;
+
+                    case "left":
+                        entity.solidArea.x -= entity.speed;
+                        if (entity.solidArea.intersects(target[i].solidArea)) {
+                            // If collision of object is true, set entity collision true  
+                            entity.collisionOn = true;
+                             // If entity is a player, they can pickup objects
+                            index = i;
+                        }
+                    break;
+
+                    case "right":
+                        entity.solidArea.x += entity.speed;
+                        if (entity.solidArea.intersects(target[i].solidArea)) {
+                            // If collision of object is true, set entity collision true  
+                            entity.collisionOn = true;
+                             // If entity is a player, they can pickup objects
+                            index = i;
+                        }  
+                    break;
+                } // switch
+
+                entity.solidArea.x = entity.solidAreaDefaultX;
+                entity.solidArea.y = entity.solidAreaDefaultY;
+                target[i].solidArea.x = target[i].solidAreaDefaultX;
+                target[i].solidArea.y = target[i].solidAreaDefaultY;
+
+            } // if
+
+        } // for
+
+        return index;
+    } // checkEntity
+
+     /**
+     * Check collision between NPC to Player
+     * 
+     * @param entity entity>player
+     */
+    public void checkPlayer(Entity entity){
+        // Get entity solid aera pos
+        entity.solidArea.x = entity.worldX + entity.solidArea.x;
+        entity.solidArea.y = entity.worldY + entity.solidArea.y;
+
+        // Get object solid area pos
+        gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
+        gp.player.solidArea.y = gp.player.worldY + gp.player.solidArea.y;
+
+        // Check direction of moving entity
+        switch(entity.direction) {
+            case "up":
+                entity.solidArea.y -= entity.speed;
+                if (entity.solidArea.intersects(gp.player.solidArea)) {
+                    // If collision of object is true, set entity collision true  
+                    entity.collisionOn = true;
+                    // If entity is a player, they can pickup objects
+                }
+            break;
+
+            case "down":
+                entity.solidArea.y += entity.speed;
+                if (entity.solidArea.intersects(gp.player.solidArea)) {
+                     // If collision of object is true, set entity collision true  
+                    entity.collisionOn = true;
+                     // If entity is a player, they can pickup objects
+                }    
+            break;
+
+            case "left":
+                entity.solidArea.x -= entity.speed;
+                if (entity.solidArea.intersects(gp.player.solidArea)) {
+                    // If collision of object is true, set entity collision true  
+                    entity.collisionOn = true;
+                     // If entity is a player, they can pickup objects
+                }
+            break;
+
+            case "right":
+                entity.solidArea.x += entity.speed;
+                if (entity.solidArea.intersects(gp.player.solidArea)) {
+                    // If collision of object is true, set entity collision true  
+                    entity.collisionOn = true;
+                     // If entity is a player, they can pickup objects
+                }  
+            break;
+        } // switch
+
+        entity.solidArea.x = entity.solidAreaDefaultX;
+        entity.solidArea.y = entity.solidAreaDefaultY;
+        gp.player.solidArea.x = gp.player.solidAreaDefaultX;
+        gp.player.solidArea.y = gp.player.solidAreaDefaultY;
+    }
 
 } // CollisionChecker

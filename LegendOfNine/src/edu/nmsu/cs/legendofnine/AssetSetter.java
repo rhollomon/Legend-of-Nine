@@ -3,6 +3,7 @@ package edu.nmsu.cs.legendofnine;
 import object.OBJ_Cheese;
 import object.OBJ_Chest;
 import object.OBJ_Door;
+import entity.NPC_OldMouse;
 import object.OBJ_Boots;
 
 public class AssetSetter {
@@ -35,6 +36,12 @@ public class AssetSetter {
 		gp.obj[4].worldX = 3 * gp.tileSize;
 		gp.obj[4].worldY = 1 * gp.tileSize;
 		
+	}
+
+	public void setNPC(){
+		gp.npc[0] = new NPC_OldMouse(gp);
+		gp.npc[0].worldX = gp.tileSize * 2;
+		gp.npc[0].worldY = gp.tileSize * 2;
 	}
 
 }
