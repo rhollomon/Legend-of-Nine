@@ -208,10 +208,10 @@ public class Player extends Entity{
 
 				case "Door":
 					//gp.playSE(3); // make sure door sound is index 3
-					if (numCheese > 0) {
+					//if (numCheese > 0) { //TODO make it a key instead
 						gp.obj[i] = null;
-						numCheese--;
-					}
+						//numCheese--;
+					//}
 					gp.ui.showMessage("Opened the door!", null);
 				break;
 
