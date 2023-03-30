@@ -16,6 +16,7 @@ public class NPC_OldMouse extends Entity{
         speed = 1;
 
         getImage();
+        setDialogue();
     }
     /**
 	 * Sends player sprites to entity variables
@@ -64,8 +65,25 @@ public class NPC_OldMouse extends Entity{
             actionLockCounter = 0;
         }
 
+    }// end of setAction
+
+    public void setDialogue(){
+        dialogues[0] = "Hello, young mouse. I see you're in\ngood spirits.";
+        dialogues[1] = "I envy your youth; I long lost the agility\nyou possess.";
+        dialogues[2] = "And the appetite!";
+        dialogues[3] = "No matter, all things get old and lose\ntheir strength.";
+        dialogues[4] = "All we can do is hope something better\nwill take our place.";
+        dialogues[5] = "Go now!";
+        dialogues[6] = "Eat the cheese, build up your courage,\nand go through those doors...";
+        dialogues[7] = "... to the house I abandoned long ago.";
+
     }
-	
+
+    public void speak(){
+        
+        super.speak();
+
+    }
 	
 
     

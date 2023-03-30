@@ -214,8 +214,15 @@ public class Player extends Entity{
 	public void interactNPC(int i){
 
 		if (i != 999) {
-			//To be implemented
+			// Player is now colliding with an NPC
+
+			if(gp.keyH.enterPressed == true){
+				gp.gameState = gp.dialogueState;
+				gp.npc[i].speak();
+			}
 		}
+		//No longer colliding with player, disable dialogue
+		gp.keyH.enterPressed = false;
 	}
 	
 	/**

@@ -33,16 +33,39 @@ public class Entity {
 	//For NPC Creation
 	GamePanel gp;
 	public int actionLockCounter = 0; //used to limit the frequency of certain NPC actions
+	String dialogues[] = new String[20];
+	int dialogueIndex = 0;
 
 	public Entity(GamePanel gp){
 		this.gp = gp;
 	}
 
 
-	public void setAction(){
+	public void setAction() {}
+	public void speak() {
+		// If we've exhausted the text of our NPC, restart the dialogueIndex to the start
+        if(dialogues[dialogueIndex] == null){
+            dialogueIndex = 0;
+        }
+        gp.ui.currentDialogue = dialogues[dialogueIndex];
+        dialogueIndex ++;
 
+		// Changes the direction of the NPC to the direction of the player
+        switch(gp.player.direction){
+            case "up":
+                direction = "down";
+                break;
+            case "down":
+            direction = "up";
+            break;
+            case "left":
+                direction = "right";
+                break;
+            case "right":
+            direction = "left";
+            break;
+        }
 	}
-
 	public void update(){
 		setAction();
 
