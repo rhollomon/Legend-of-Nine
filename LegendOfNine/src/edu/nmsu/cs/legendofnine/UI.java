@@ -74,6 +74,8 @@ public class UI {
 				break;
 			} // end switch
 		} // end if
+		else { itemImage = null; }
+		
 	} // end showMessage
 	
 	
