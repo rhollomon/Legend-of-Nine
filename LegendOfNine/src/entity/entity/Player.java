@@ -189,6 +189,8 @@ public class Player extends Entity{
 						gp.ui.showMessage("You need "+(2-numCheese)+" more cheese", null);
 					} else {
 						gp.ui.gameFinished = true;
+						gp.stopMusic();
+						//TODO play winning sound effect here
 					}
 						
 				break;
