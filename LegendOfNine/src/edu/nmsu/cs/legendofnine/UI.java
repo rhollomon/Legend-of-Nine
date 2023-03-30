@@ -177,6 +177,12 @@ public class UI {
 
 	} // end draw
 	
+	
+	
+	
+	/**
+	 * Display pause screen UI
+	 */
 	public void drawPauseScreen() {
 		
 	 g2.setFont(pixel_font.deriveFont(Font.PLAIN, 40F));
@@ -186,15 +192,30 @@ public class UI {
 	 
 	 int y = gp.screenHeight/2; 
 	 g2.drawString(text,x, y);
-	}
+	} // end drawPauseScreen
 	
+	
+	
+	
+	/**
+	 * Generate x value for centering text on screen
+	 * 
+	 * @param text to generate x value for
+	 * @return x value
+	 */
 	public int getXforCenteredText(String text) {
 		int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
 		int x = gp.screenWidth/2 - length/2;
 		return x;
 		
-	}
+	} // getXforCenteredText
 
+	
+	
+	
+	/**
+	 * Display dialogue window UI
+	 */
 	public void drawDialogueScreen(){
 
 		//Defining dimensions of sub window and creation
@@ -213,8 +234,18 @@ public class UI {
 			g2.drawString(line, x, y);
 			y += 40; //displays following line below the previous line
 		}
-	}
-
+	} // end drawDialogueScreen
+	
+	
+	
+	/**
+	 * Draw sub window; arguments are parameters of window
+	 * 
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 */
 	public void drawSubWindow(int x, int y, int width, int height){
 		Color c = new Color(0,0,0, 200); //black, with slight transparency
 		g2.setColor(c);
@@ -223,5 +254,5 @@ public class UI {
 		g2.setColor(c);
 		g2.setStroke(new BasicStroke(5)); //defines the width of the border surrounding sub window
 		g2.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 25, 25);
-	}
+	} // end drawSubWindow
 }

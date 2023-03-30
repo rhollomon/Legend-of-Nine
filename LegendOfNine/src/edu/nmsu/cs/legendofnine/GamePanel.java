@@ -69,6 +69,9 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	
 	
+	/**
+	 * Setup objects, NPCs, music
+	 */
 	public void setupGame() {
 		aSetter.setObject();
 		aSetter.setNPC();
@@ -78,6 +81,9 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	
 	
+	/**
+	 * Create and run new game thread
+	 */
 	public void startGameThread() {
 		gameThread = new Thread(this);
 		gameThread.start(); 
@@ -207,7 +213,7 @@ public class GamePanel extends JPanel implements Runnable{
 		sound.setFile(i);
 		sound.play();
 		sound.loop();
-	}
+	} // end playMusic
 
 	
 	
@@ -215,7 +221,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public void stopMusic() {
 
 		sound.stop();
-	}
+	} // end stopMusic
 
 	
 	
@@ -224,6 +230,6 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		sound.setFile(i);
 		sound.play();
-	}
+	} // end playSE
 	
 } // end GamePanel

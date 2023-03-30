@@ -19,6 +19,9 @@ public class Player extends Entity{
 	public final int screenY;
 
 	public int numCheese = 0; // # of cheese player has picked up
+	
+	
+	
 	/**
 	 * Constructor for Player class
 	 * 
@@ -87,6 +90,10 @@ public class Player extends Entity{
 	} // end getPlayerImage
 	
 	
+	
+	/**
+	 * Try to read and load image from name and path
+	 */
 	public BufferedImage setup(String imageName) {
 
 		UtilityTool uTool = new UtilityTool();
@@ -100,9 +107,10 @@ public class Player extends Entity{
 			e.printStackTrace();
 		}
 		return image;
-	}
+	} // end setup
 
 
+	
 	/**
 	 * Update player position upon keys being pressed
 	 */
@@ -162,6 +170,9 @@ public class Player extends Entity{
 		
 	} // end update
 
+	
+	
+	
 	/**
 	 * Given index of object, get object name and perform relative action
 	 * 
@@ -211,10 +222,18 @@ public class Player extends Entity{
 					
 					gp.ui.showMessage("Picked up boots! (+1 speed)", "boots");
 					break;
-			}
-		}
+			} // end switch
+		} // end if
 	} // end pickupObject
 	
+	
+	
+
+	/**
+	 * NPC interaction upon collision
+	 * 
+	 * @param i If not set to 999, play NPC interaction
+	 */
 	public void interactNPC(int i){
 
 		if (i != 999) {
@@ -225,9 +244,13 @@ public class Player extends Entity{
 				gp.npc[i].speak();
 			}
 		}
+		
 		//No longer colliding with player, disable dialogue
 		gp.keyH.enterPressed = false;
-	}
+	} // end interactNPC
+	
+	
+	
 	
 	/**
 	 * Sets player sprite based on direction, and animates extra frames while walking.
