@@ -109,7 +109,7 @@ public class Player extends Entity{
 	public void update() {
 		
 		if(keyH.upPressed == true || keyH.downPressed == true 
-	    || keyH.leftPressed == true || keyH.rightPressed == true) {
+	    || keyH.leftPressed == true || keyH.rightPressed == true || keyH.enterPressed == true) {
 			
 			if(keyH.upPressed == true) { // If W is pressed
 	   			direction = "up";
@@ -137,7 +137,7 @@ public class Player extends Entity{
 			interactNPC(npcIndex);
 
 			// If collisionOn is false, player can move
-			if (collisionOn == false){
+			if (collisionOn == false && keyH.enterPressed == false){
 				
 				switch(direction){
 				case "up":    worldY -= speed;  break;
@@ -146,6 +146,8 @@ public class Player extends Entity{
 				case "right": worldX += speed;  break;
 				}
 			}
+
+			gp.keyH.enterPressed = false;// used to for NPC dialogue w/out the need for WASD key
 			
 			// Tells sprite to go to the next animation every 11 frames
 			spriteCounter++;

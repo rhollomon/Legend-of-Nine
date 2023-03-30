@@ -33,8 +33,8 @@ public class Entity {
 	//For NPC Creation
 	GamePanel gp;
 	public int actionLockCounter = 0; //used to limit the frequency of certain NPC actions
-	String dialogues[] = new String[20];
-	int dialogueIndex = 0;
+	String dialogues[] = new String[20]; //array storing the series of dialogues of an NPC
+	int dialogueIndex = 0; // used to traverse the dialogues array
 
 	public Entity(GamePanel gp){
 		this.gp = gp;
