@@ -38,8 +38,4 @@ N/A
 
 ### 2.1 Context of Product
 
-Game should be run on PC. If modifying, your machine will need to support Java Swing, which means you will most likely need a computer with either the Windows or Mac OS.
-
-## 2.2 Domain Model with Description
-
-Display and describe your domain model.
+Game should be run on PC. If modifying, your machine will need to support Java Swing.
