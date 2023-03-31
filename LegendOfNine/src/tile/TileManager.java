@@ -26,11 +26,11 @@ public class TileManager {
 		
 		this.gp = gp;
 		
-		tile = new Tile[20]; // Currently supports 20 different types of tiles
+		tile = new Tile[52]; // Currently supports 52 different types of tiles
 		mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow]; //determined by World Settings in GamePanel.java
 		
 		getTileImage();
-		loadMap("/maps/maptest.txt");
+		loadMap("/maps/hubarea.txt");
 		
 	} // end constructor
 	
@@ -86,6 +86,7 @@ public class TileManager {
 	public void getTileImage() {
 		
 
+		// TESTING AREA TILES 0-10
 		setup(0, "grass1", false);
 		setup(1, "grass2", false);
 		setup(2, "grass3", false);
@@ -97,9 +98,63 @@ public class TileManager {
 		setup(8, "fence_top_right", true);
 		setup(9, "fence_bottom_left", true);
 		setup(10, "fence_bottom_right", true);
-
+		
+		// HUB AREA TILES
+		// Corners 12-15
+		// Inverse corners 16-19
+		// Left walls 20-21
+		// Right walls 22-23
+		// Top walls 24-27
+		// Bottom walls 28-31
+		// Floor edges (clockwise) 32-40
+		// Floor centers 41-44
+		// Tutorial 45-51
+		setup(11, "dummy_tile", false);
+		setup(12, "wallleftuppercorner", true);
+		setup(13, "wallrightuppercorner", true);
+		setup(14, "wallleftbottomcorner", true);
+		setup(15, "wallrightbottomcorner", true);
+		setup(16, "wallturnleft1", true);
+		setup(17, "wallturnleft2", true);
+		setup(18, "wallturnright1", true);
+		setup(19, "wallturnright2", true);
+		setup(20, "wallleft1", true);
+		setup(21, "wallleft2", true);
+		setup(22, "wallright1", true);
+		setup(23, "wallright2", true);
+		setup(24, "wallupper1", true);
+		setup(25, "wallupper2", true);
+		setup(26, "wallupper3", true);
+		setup(27, "wallupper4", true);
+		setup(28, "wallbottom1", true);
+		setup(29, "wallbottom2", true);
+		setup(30, "wallbottom3", true);
+		setup(31, "wallbottom4", true);
+		setup(32, "floorupperleft", false);
+		setup(33, "floorupper1", false);
+		setup(34, "floorupper2", false);
+		setup(35, "floorupperright", false);
+		setup(36, "floorright", false);
+		setup(37, "floorbottomright", false);
+		setup(38, "floorbottom1", false);
+		setup(39, "floorbottom2", false);
+		setup(40, "floorbottomleft", false);
+		setup(41, "floor1", false);
+		setup(42, "floor2", false);
+		setup(43, "floor3", false);
+		setup(44, "floor4", false);
+		setup(45, "tutorial1", false);
+		setup(46, "tutorial2", false);
+		setup(47, "tutorial3", false);
+		setup(48, "tutorial4", false);
+		setup(49, "tutorial5", false);
+		setup(50, "tutorial6", false);
+		setup(51, "tutorial7", false);
 	} // end 
 
+	
+	
+	
 	public void setup(int index, String imageName, boolean collision) {
 
 		UtilityTool uTool = new UtilityTool();
@@ -114,6 +169,10 @@ public class TileManager {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	
 	
 	/**
 	 * Draws currently loaded map.
