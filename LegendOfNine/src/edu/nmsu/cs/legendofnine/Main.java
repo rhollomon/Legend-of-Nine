@@ -1,6 +1,10 @@
 package edu.nmsu.cs.legendofnine;
 
+import java.awt.image.BufferedImage;
+
 import javax.swing.JFrame;
+
+import object.OBJ_Cheese;
 
 public class Main {
 
@@ -23,6 +27,11 @@ public class Main {
 		
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
+		
+		// Set icon
+		OBJ_Cheese cheese = new OBJ_Cheese(gamePanel);
+		BufferedImage cheeseImage = cheese.image;
+		window.setIconImage(cheeseImage);
 		
 		gamePanel.setupGame();
 		gamePanel.startGameThread();
