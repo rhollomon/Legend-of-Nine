@@ -13,16 +13,16 @@ public class NPC_OldMouse extends Entity{
         super(gp);
 
         direction = "down";
-        speed = 1;
+        speed = 1; 
 
-        getImage();
+        getImage();  
         setDialogue();
     }
     /**
 	 * Sends player sprites to entity variables
 	 * 
 	 * @throws IOException
-	 */
+	 */ 
 	public void getImage() {
 	
 		up1 = setup("/npc/oldmouse_up_1");

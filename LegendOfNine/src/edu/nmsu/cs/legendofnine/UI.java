@@ -12,6 +12,8 @@ import java.text.DecimalFormat;
 
 import object.OBJ_Boots;
 import object.OBJ_Cheese;
+import object.OBJ_Heart;
+import object.SuperObject;
 
 public class UI {
 	
@@ -22,6 +24,9 @@ public class UI {
 	
 	BufferedImage cheeseImage;
 	BufferedImage itemImage;
+	BufferedImage heart_full;
+	BufferedImage heart_half;
+	BufferedImage heart_blank;
 	
 	public boolean messageOn = false;
 	public String message = "";
@@ -55,6 +60,12 @@ public class UI {
 		cheeseImage = cheese.image;
 		
 		playTime = 0;
+
+		// CREATE HUD OBJECT
+		SuperObject heart = new OBJ_Heart(gp);
+		heart_full = heart.image;
+		heart_blank = heart.image3;
+		heart_half = heart.image2;
 	} // end constructor
 	
 	
@@ -141,6 +152,8 @@ public class UI {
 			} else { // typical gameplay behavior
 				g2.setFont(pixel_font.deriveFont(Font.PLAIN, 36F));
 				g2.setColor(Color.white);
+
+				drawPlayerLife();
 			
 				g2.drawImage(cheeseImage, gp.tileSize/2, gp.tileSize/2, gp.tileSize/2, gp.tileSize/2, null);
 			
@@ -166,6 +179,7 @@ public class UI {
 						messageCounter = 0;
 						messageOn = false;
 					}
+
 				}
 			} // end else
 		} // end play state 
@@ -177,12 +191,44 @@ public class UI {
 
 		//Dialogue State
 		if(gp.gameState == gp.dialogueState){
+			drawPlayerLife();
 			drawDialogueScreen();
 		}
 
 	} // end draw
 	
-	
+	/*
+	 *  Draw Plater life when the method is called
+	 */
+	public void drawPlayerLife() {
+		int x = gp.tileSize/2;
+		int y = gp.tileSize/2 + 35; // drawing it right under the # of cheese collected
+		int i = 0;
+
+		// DRAW MAX LIFE
+		while(i<gp.player.maxlife/2) {
+			g2.drawImage(heart_blank, x, y, null);
+			i++;
+			x += gp.tileSize;
+		}
+
+		// RESSET
+		x = gp.tileSize/2;
+		y = gp.tileSize/2 + 35; // drawing it right under the # of cheese collected
+		i = 0;
+
+		// DRAW CURRENT LIFE
+		while (i < gp.player.life) {
+			g2.drawImage(heart_half,x, y, null);
+			i++;
+			if(i<gp.player.life) {
+				g2.drawImage(heart_full,x,y,null);	
+			}
+			i++;
+			x += gp.tileSize;
+		}
+	}
+
 	/**
 	 * Draw Title screen when in gp.titleState
 	 */

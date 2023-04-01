@@ -36,6 +36,10 @@ public class Entity {
 	String dialogues[] = new String[20]; //array storing the series of dialogues of an NPC
 	int dialogueIndex = 0; // used to traverse the dialogues array
 
+	// CHARACTER STATUS
+	public int maxlife;
+	public int life;
+
 	public Entity(GamePanel gp){
 		this.gp = gp;
 	}

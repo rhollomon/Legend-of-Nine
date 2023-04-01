@@ -66,6 +66,10 @@ public class Player extends Entity{
 		
 		speed = 4;
 		direction = "down";
+
+		// PLAYER STATUS	
+		maxlife = 6;
+		life = maxlife;
 		
 	} // end setDefaultValues
 	
