@@ -10,10 +10,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
 
+import entity.Entity;
 import object.OBJ_Boots;
 import object.OBJ_Cheese;
 import object.OBJ_Heart;
-import object.SuperObject;
 
 public class UI {
 	
@@ -62,7 +62,7 @@ public class UI {
 		playTime = 0;
 
 		// CREATE HUD OBJECT
-		SuperObject heart = new OBJ_Heart(gp);
+		Entity heart = new OBJ_Heart(gp);
 		heart_full = heart.image;
 		heart_blank = heart.image3;
 		heart_half = heart.image2;

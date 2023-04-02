@@ -18,7 +18,7 @@ public class Entity {
 	public int worldX, worldY, speed;
 	
 	public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
-	public String direction;
+	public String direction = "down";
 	
 	public int spriteCounter = 0;
 	public int spriteNum = 1;
@@ -35,6 +35,10 @@ public class Entity {
 	public int actionLockCounter = 0; //used to limit the frequency of certain NPC actions
 	String dialogues[] = new String[20]; //array storing the series of dialogues of an NPC
 	int dialogueIndex = 0; // used to traverse the dialogues array
+
+	public BufferedImage image, image2, image3;
+	public String name;
+	public boolean collision = false;
 
 	// CHARACTER STATUS
 	public int maxlife;

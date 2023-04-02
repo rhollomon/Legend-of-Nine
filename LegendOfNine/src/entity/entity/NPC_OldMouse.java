@@ -1,11 +1,7 @@
 package entity;
 import edu.nmsu.cs.legendofnine.GamePanel;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
-
-import edu.nmsu.UtilityTool;
-import javax.imageio.ImageIO;
 
 public class NPC_OldMouse extends Entity{
     
