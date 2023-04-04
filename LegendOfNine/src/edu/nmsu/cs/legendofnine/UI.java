@@ -9,6 +9,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+
+import com.oracle.webservices.internal.api.message.MessageContext;
 
 import entity.Entity;
 import object.OBJ_Boots;
@@ -29,8 +32,8 @@ public class UI {
 	BufferedImage heart_blank;
 	
 	public boolean messageOn = false;
-	public String message = "";
-	int messageCounter = 0;
+	ArrayList<String> message = new ArrayList<>();
+	ArrayList<Integer> messageCounter = new ArrayList<>();
 	public boolean gameFinished = false;
 	public String currentDialogue = "";
 	public int commandNum = 0;
@@ -69,10 +72,11 @@ public class UI {
 	} // end constructor
 	
 	
-	
-	public void showMessage(String text, String item) {
-		message = text;
-		messageOn = true;
+	public void addMessage(String text, String item) {
+		
+		
+		message.add(text);
+		messageCounter.add(0);
 		
 		if(item != null) {
 			switch(item) {
@@ -165,22 +169,23 @@ public class UI {
 				g2.drawString("Time: "+dFormat.format(playTime), gp.screenWidth-175, 55);
 			
 				// Display notification message for 2 seconds
-				if(messageOn) {
-					// Draw message
-					g2.drawString(message, gp.tileSize+10, gp.tileSize*5);
+				// if(messageOn) {
+				// 	// Draw message
+				// 	g2.drawString(message, gp.tileSize+10, gp.tileSize*5);
 				
-					if(itemImage != null)
-						g2.drawImage(itemImage, gp.tileSize/2, gp.tileSize*5-25, gp.tileSize/2, gp.tileSize/2, null);
+				// 	if(itemImage != null)
+				// 		g2.drawImage(itemImage, gp.tileSize/2, gp.tileSize*5-25, gp.tileSize/2, gp.tileSize/2, null);
 				
-					messageCounter++;
+				// 	messageCounter++;
 				
-					// After 120 frames hide message
-					if(messageCounter > 120) {
-						messageCounter = 0;
-						messageOn = false;
-					}
+				// 	// After 120 frames hide message
+				// 	if(messageCounter > 120) {
+				// 		messageCounter = 0;
+				// 		messageOn = false;
+				// 	}
 
-				}
+				// }
+				drawMessage();
 			} // end else
 		} // end play state 
 		
@@ -233,6 +238,31 @@ public class UI {
 			x += gp.tileSize;
 		}
 	}
+
+	public void drawMessage() {
+
+		int messageX = gp.tileSize;
+		int messageY = gp.tileSize*4;
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD, 32f));
+
+		for(int i =0; i<message.size();i++) {
+
+			g2.setColor(Color.black);
+			g2.drawString(message.get(i), messageX+2, messageY+2);
+			g2.setColor(Color.white);
+			g2.drawString(message.get(i), messageX, messageY);
+
+			int counter = messageCounter.get(i) + 1;
+			messageCounter.set(i, counter);
+			messageY += 50;
+
+			if(messageCounter.get(i) > 180) {
+				message.remove(i);
+				messageCounter.remove(i);
+			}
+		}
+	}
+
 
 	/**
 	 * Draw Title screen when in gp.titleState

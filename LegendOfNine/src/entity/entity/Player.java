@@ -308,7 +308,7 @@ public class Player extends Entity{
 					//gp.playSE(2); // make sure chest sound is index 2
 										
 					if(numCheese < 2) {
-						gp.ui.showMessage("You need "+(2-numCheese)+" more cheese", null);
+						gp.ui.addMessage("You need "+(2-numCheese)+" more cheese", null);
 					} else {
 						gp.ui.gameFinished = true;
 						gp.stopMusic();
@@ -323,7 +323,7 @@ public class Player extends Entity{
 						gp.obj[i] = null;
 						//numCheese--;
 					//}
-					gp.ui.showMessage("Opened the door!", null);
+					gp.ui.addMessage("Opened the door!", null);
 				break;
 
 				case "Boots": 
@@ -331,7 +331,7 @@ public class Player extends Entity{
 					speed+=1;
 					gp.obj[i]=null;
 					
-					gp.ui.showMessage("Picked up boots! (+1 speed)", "boots");
+					gp.ui.addMessage("Picked up boots! (+1 speed)", "boots");
 					break;
 			} // end switch
 		} // end if
@@ -364,9 +364,19 @@ public class Player extends Entity{
 
 		if(i != 999) {
 
+			
+
 			if(invincible == false) {
+
 				// TODO gp.playSE(i); where i is the index of monster hit sound effect
-				life -= 1;
+
+				int damage = gp.monster[i].atkVal - defVal; {
+					if(damage < 0) {
+						damage = 0;
+					}
+				}
+
+				life -= damage;
 				invincible = true;
 			}
 		}
@@ -377,19 +387,49 @@ public class Player extends Entity{
 		if(i != 999) {
 		
 			if(gp.monster[i].invincible == false) {
+
+				int damage = atkVal - gp.monster[i].defVal; {
+					if(damage < 0) {
+						damage = 0;
+					}
+				}
 				
 				// TODO gp.playSE(i); where i is the index of monster damaged sound effect
-				gp.monster[i].life -= 1;
+				gp.monster[i].life -= damage;
+				gp.ui.addMessage(damage + " damage!",null);
+
 				gp.monster[i].invincible = true;
 				gp.monster[i].damageReaction();
 
 				if(gp.monster[i].life <=0) {
 					gp.monster[i].dying = true;
+					gp.ui.addMessage("killed the " + gp.monster[i].name + "!",null);
+					exp += gp.monster[i].exp;
+					gp.ui.addMessage("Exp + " + gp.monster[i].exp + "!",null);
+					checkLevelUp();
 				}
 			}
 
 		}
 
+	}
+
+	public void checkLevelUp() {
+		
+		if(exp >= nextLevelExp) {
+
+			// gp.playSE(i); where i is the index of level up sound
+			level++;
+			nextLevelExp = nextLevelExp+14;
+			maxlife += 2;
+			strength++;
+			dex++;
+			atkVal = getAtk();
+			defVal = getDef();
+
+			gp.gameState = gp.dialogueState;
+			gp.ui.currentDialogue = "You are level " + level + " now!\nYou feel stronger!"; 
+		}
 	}
 	
 	

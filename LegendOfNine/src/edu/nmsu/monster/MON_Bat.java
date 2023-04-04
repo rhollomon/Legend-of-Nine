@@ -19,6 +19,9 @@ public class MON_Bat extends Entity {
         speed = 1;
         maxlife = 3;
         life = maxlife;
+        atkVal = 5;
+        defVal = 0;
+        exp = 3;
 
         solidArea.x = 3;
         solidArea.y = 18;

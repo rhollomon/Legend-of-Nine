@@ -119,7 +119,13 @@ public class Entity {
 			if(gp.player.invincible == false) {
 				// we give damage
 				// TODO gp.playSE(i) where i is the index of the damage sound effect
-				gp.player.life -= 1;
+
+				int damage = atkVal - gp.player.defVal;
+				if(damage < 0) {
+					damage = 0;
+				}
+
+				gp.player.life -= damage;
 				gp.player.invincible = true;
 			}
 		}
@@ -190,6 +196,9 @@ public class Entity {
 
 						double oneScale = (double)gp.tileSize/maxlife;
 						double hpBarValue = oneScale*life;
+						if(hpBarValue <= 0) {
+							hpBarValue = 0;
+						}
 
 						g2.setColor(new Color(35, 35, 35));
 						g2.fillRect(screenX-1, screenY-16, gp.tileSize+2, 12);

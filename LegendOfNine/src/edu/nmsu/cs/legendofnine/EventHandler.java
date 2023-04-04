@@ -96,6 +96,7 @@ public class EventHandler {
             // gp.playSE(i) index of healing area sound effect
             gp.ui.currentDialogue = "You have been healed by\n unknown sources";
             gp.player.life = gp.player.maxlife;
+            gp.aSetter.setMonster();
         }
     }
 
