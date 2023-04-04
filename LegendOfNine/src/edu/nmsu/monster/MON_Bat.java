@@ -7,8 +7,12 @@ import entity.Entity;
 
 public class MON_Bat extends Entity {
 
+    GamePanel gp;
+
     public MON_Bat(GamePanel gp) {
         super(gp);
+
+        this.gp = gp;
 
         type = 2;
         name = "Bat";
