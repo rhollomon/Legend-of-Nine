@@ -12,6 +12,8 @@ import javax.imageio.ImageIO;
 import edu.nmsu.UtilityTool;
 import edu.nmsu.cs.legendofnine.GamePanel;
 import edu.nmsu.cs.legendofnine.KeyHandler;
+import object.OBJ_Shield_Normal;
+import object.OBJ_Sword_Normal;
 
 public class Player extends Entity{
 	
@@ -21,6 +23,8 @@ public class Player extends Entity{
 	public final int screenY;
 
 	public int numCheese = 0; // # of cheese player has picked up
+
+	public boolean attackCancled = false;
 	
 	
 	
@@ -74,12 +78,28 @@ public class Player extends Entity{
 		direction = "down";
 
 		// PLAYER STATUS	
+		level = 1;
 		maxlife = 6;
 		life = maxlife;
+		strength = 1; // the more strength they have, the more damage they deal.
+		dex = 1; // the more dex they have, they less damage they recieve
+		exp = 0;
+		nextLevelExp = 5;
+		coin = 0;
+		currentWeapon = new OBJ_Sword_Normal(gp);
+		currentShield = new OBJ_Shield_Normal(gp);
+		atkVal = getAtk(); // the total atk value is decided by strength and weapon
+		defVal = getDef(); // the total def value is decided by dex and shield
 		
 	} // end setDefaultValues
-	
-	
+
+	public int getAtk() {
+		return atkVal = strength * currentWeapon.itemAtkVal;
+	}
+
+	public int getDef() {
+		return defVal = dex * currentShield.itemDefVal;
+	}
 	
 	/**
 	 * Sends player sprites to entity variables
@@ -188,6 +208,14 @@ public class Player extends Entity{
 				case "right": worldX += speed;  break;
 				}
 			}
+
+			if(keyH.enterPressed == true && attackCancled == false) {
+				// gp.playSE(i); index i is the sound effect for attacking
+				attacking = true;
+				spriteCounter = 0;
+			}
+
+			attackCancled = false;
 
 			gp.keyH.enterPressed = false;// used to for NPC dialogue w/out the need for WASD key
 			
@@ -324,14 +352,10 @@ public class Player extends Entity{
 
 			if (i != 999) {
 				// Player is now colliding with an NPC
+				attackCancled = true;
 				gp.gameState = gp.dialogueState;
 				gp.npc[i].speak();
 			}// end if
-
-			else {
-					attacking = true;
-
-			} // end else
 		}
 
 	} // end interactNPC
@@ -341,6 +365,7 @@ public class Player extends Entity{
 		if(i != 999) {
 
 			if(invincible == false) {
+				// TODO gp.playSE(i); where i is the index of monster hit sound effect
 				life -= 1;
 				invincible = true;
 			}
@@ -353,11 +378,13 @@ public class Player extends Entity{
 		
 			if(gp.monster[i].invincible == false) {
 				
+				// TODO gp.playSE(i); where i is the index of monster damaged sound effect
 				gp.monster[i].life -= 1;
 				gp.monster[i].invincible = true;
+				gp.monster[i].damageReaction();
 
 				if(gp.monster[i].life <=0) {
-					gp.monster[i] = null;
+					gp.monster[i].dying = true;
 				}
 			}
 

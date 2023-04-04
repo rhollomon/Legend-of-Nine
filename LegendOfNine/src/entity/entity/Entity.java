@@ -3,6 +3,7 @@ import java.awt.image.BufferedImage;
 import edu.nmsu.cs.legendofnine.GamePanel;
 
 import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.io.IOException;
@@ -41,16 +42,35 @@ public class Entity {
 	public int invincibleCounter = 0;
 	String dialogues[] = new String[20]; //array storing the series of dialogues of an NPC
 	int dialogueIndex = 0; // used to traverse the dialogues array
+	public boolean alive = true;
+	public boolean dying = false;
+	int dyingCounter = 0;
+	boolean hpBarOn = false;
+	int hpBarCounter = 0;
 
 	public BufferedImage image, image2, image3;
-	public String name;
 	public boolean collision = false;
 	boolean attacking = false;
-	public int type; // 0 = player, 1 = npc, 2 = monster
 
 	// CHARACTER STATUS
+	public int type; // 0 = player, 1 = npc, 2 = monster
+	public String name;
 	public int maxlife;
 	public int life;
+	public int level;
+	public int strength;
+	public int dex;
+	public int atkVal;
+	public int defVal;
+	public int exp;
+	public int nextLevelExp;
+	public int coin;
+	public Entity currentWeapon;
+	public Entity currentShield;
+
+	// Item Attributes
+	public int itemAtkVal;
+	public int itemDefVal;
 
 	public Entity(GamePanel gp){
 		this.gp = gp;
@@ -58,6 +78,9 @@ public class Entity {
 
 
 	public void setAction() {}
+
+	public void damageReaction(){}
+
 	public void speak() {
 		// If we've exhausted the text of our NPC, restart the dialogueIndex to the start
         if(dialogues[dialogueIndex] == null){
@@ -95,6 +118,7 @@ public class Entity {
 		if(this.type == 2 && contactPlayer == true) {
 			if(gp.player.invincible == false) {
 				// we give damage
+				// TODO gp.playSE(i) where i is the index of the damage sound effect
 				gp.player.life -= 1;
 				gp.player.invincible = true;
 			}
@@ -161,14 +185,65 @@ public class Entity {
 						
 					} // end switch
 
+					// Monster HP Bar
+					if(type == 2 && hpBarOn == true) {
+
+						double oneScale = (double)gp.tileSize/maxlife;
+						double hpBarValue = oneScale*life;
+
+						g2.setColor(new Color(35, 35, 35));
+						g2.fillRect(screenX-1, screenY-16, gp.tileSize+2, 12);
+
+						g2.setColor(new Color(255, 0, 30));
+						g2.fillRect(screenX, screenY - 15, (int)hpBarValue, 10);
+
+						hpBarCounter++;
+
+						if(hpBarCounter > 600) {
+							hpBarCounter = 0;
+							hpBarOn = false;
+						}
+
+					}
+
 					if(invincible == true) {
-						g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
+						hpBarOn = true;
+						hpBarCounter = 0;
+						changeAlpha(g2, 0.4f);
+					}
+
+					if(dying == true) {
+						dyingAnimation(g2);
 					}
 
 					g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 
-					g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+					changeAlpha(g2, 1f);
 			} // end if
+	}
+
+	public void dyingAnimation(Graphics2D g2) {
+
+		dyingCounter++;
+
+		int i = 5;
+
+		if(dyingCounter <= i) {changeAlpha(g2,0f);}
+		if(dyingCounter > i && dyingCounter <= i*2) {changeAlpha(g2,1f);}
+		if(dyingCounter > i*2 && dyingCounter <= i*3 ) {changeAlpha(g2,0f);}
+		if(dyingCounter > i*3 && dyingCounter <= i*4) {changeAlpha(g2,1f);}
+		if(dyingCounter > i*4 && dyingCounter <= i*5) {changeAlpha(g2,0f);}
+		if(dyingCounter > i*5 && dyingCounter <= i*6) {changeAlpha(g2,1f);}
+		if(dyingCounter > i*6 && dyingCounter <= i*7) {changeAlpha(g2,0f);}
+		if(dyingCounter > i*7 && dyingCounter <= i*8) {changeAlpha(g2,1f);}
+		if(dyingCounter > i*8) {
+			dying = false;
+			alive = false;
+		}
+	}
+
+	public void changeAlpha(Graphics2D g2, float alphaValue) {
+		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alphaValue));
 	}
 
 	public BufferedImage setup(String imagePath) {

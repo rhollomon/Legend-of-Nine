@@ -19,80 +19,107 @@ public class KeyHandler implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
 
-        // Title State - Move cursor 
-        if (gp.gameState == gp.titleState) {
-
-            if(code == KeyEvent.VK_W) {
-                gp.ui.commandNum--;
-                if (gp.ui.commandNum < 0) {
-                    gp.ui.commandNum=1;
-                }
-            }
-            if(code == KeyEvent.VK_S) {
-                gp.ui.commandNum++;
-
-                if (gp.ui.commandNum>1)
-                {
-                    gp.ui.commandNum=0;
-                }
-            }
-            if (code == KeyEvent.VK_ENTER) {
-                if (gp.ui.commandNum == 0) {
-                    // NEW GAME
-                    gp.gameState = gp.playState;
-                }
-                if (gp.ui.commandNum==1){
-                    // QUIT
-                    System.exit(0);
-                }
-            }
+        // Title State
+        if(gp.gameState == gp.titleState) {
+            titleState(code);
         }
         // Play State
-        else if(gp.gameState == gp.playState){
-            if(code == KeyEvent.VK_W) {
-                upPressed = true;
-            }
-            if(code == KeyEvent.VK_S) {
-                downPressed = true;
-            }
-            if(code == KeyEvent.VK_A) {
-                leftPressed = true;
-            }
-            if(code == KeyEvent.VK_D) {
-                rightPressed = true;
-            }
-            if(code == KeyEvent.VK_P) {
-                gp.gameState = gp.pauseState;
-            }
-            if(code == KeyEvent.VK_ENTER) {
-                enterPressed = true;
-            }
-            
-            if(code == KeyEvent.VK_T) {
-                if (checkDrawTime == false) {
-                    checkDrawTime = true;
-                }
-                else if (checkDrawTime == true) {
-                    checkDrawTime = false;
-                }
-            }
-        } // end of if
-
-        //Pause State
-        else if(gp.gameState == gp.pauseState){
-            if(code == KeyEvent.VK_P) {
-                gp.gameState = gp.playState;
-            }
+        else if(gp.gameState == gp.playState) {
+            playState(code);
+        }
+        // Pause State
+        else if(gp.gameState == gp.pauseState) {
+            pauseState(code);
+        }
+        // Dialouge State
+        else if(gp.gameState == gp.dialogueState) {
+            dialogueState(code);
+        }
+        // Character State
+        else if(gp.gameState == gp.characterState) {
+            characterState(code);
         }
 
-        //Dialogue State
-        else if(gp.gameState == gp.dialogueState){
-            if(code == KeyEvent.VK_ENTER) {
+    }
+
+    public void titleState(int code) {
+        
+        if(code == KeyEvent.VK_W) {
+            gp.ui.commandNum--;
+            if (gp.ui.commandNum < 0) {
+                gp.ui.commandNum=1;
+            }
+        }
+        if(code == KeyEvent.VK_S) {
+            gp.ui.commandNum++;
+
+            if (gp.ui.commandNum>1)
+            {
+                gp.ui.commandNum=0;
+            }
+        }
+        if (code == KeyEvent.VK_ENTER) {
+            if (gp.ui.commandNum == 0) {
+                // NEW GAME
                 gp.gameState = gp.playState;
+            }
+            if (gp.ui.commandNum==1){
+                // QUIT
+                System.exit(0);
             }
         }
     }
-    
+
+    public void playState(int code) {
+        if(code == KeyEvent.VK_W) {
+            upPressed = true;
+        }
+        if(code == KeyEvent.VK_S) {
+            downPressed = true;
+        }
+        if(code == KeyEvent.VK_A) {
+            leftPressed = true;
+        }
+        if(code == KeyEvent.VK_D) {
+            rightPressed = true;
+        }
+        if(code == KeyEvent.VK_P) {
+            gp.gameState = gp.pauseState;
+        }
+        if(code == KeyEvent.VK_C) {
+            gp.gameState = gp.characterState;
+        }
+        if(code == KeyEvent.VK_ENTER) {
+            enterPressed = true;
+        }
+        
+        if(code == KeyEvent.VK_T) {
+            if (checkDrawTime == false) {
+                checkDrawTime = true;
+            }
+            else if (checkDrawTime == true) {
+                checkDrawTime = false;
+            }
+        }
+    }
+
+    public void pauseState(int code) {
+        if(code == KeyEvent.VK_P) {
+            gp.gameState = gp.playState;
+        }
+    }
+
+    public void dialogueState(int code) {
+        if(code == KeyEvent.VK_ENTER) {
+            gp.gameState = gp.playState;
+        }
+    }
+
+    public void characterState(int code) {
+        if(code == KeyEvent.VK_C) {
+            gp.gameState = gp.playState;
+        }
+    }
     
 
     @Override
