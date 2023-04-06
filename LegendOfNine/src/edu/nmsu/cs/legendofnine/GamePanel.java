@@ -216,6 +216,7 @@ public class GamePanel extends JPanel implements Runnable{
 					entityList.add(monster[i]);
 				}
 			}
+			
 
 			// SORT
 			Collections.sort(entityList, new Comparator<Entity>() {
@@ -234,6 +235,9 @@ public class GamePanel extends JPanel implements Runnable{
 			}
 			// EMPTY ENTITY LIST
 			entityList.clear();
+			
+			// draw map ABOVE player
+			tileM.drawOverlay(g2);
 
 			// UI
 			ui.draw(g2);

@@ -16,6 +16,7 @@ public class TileManager {
 	GamePanel gp;
 	public Tile[] tile;
 	public int mapTileNum[][];
+	public int mapOverlayNum[][];
 	
 	
 	/**
@@ -25,11 +26,13 @@ public class TileManager {
 		
 		this.gp = gp;
 		
-		tile = new Tile[52]; // Currently supports 52 different types of tiles
+		tile = new Tile[55]; // Currently supports 55 different types of tiles
 		mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow]; //determined by World Settings in GamePanel.java
+		mapOverlayNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 		
 		getTileImage();
 		loadMap("/maps/hubarea.txt");
+		loadOverlay("/maps/huboverlay.txt");
 		
 	} // end constructor
 	
@@ -58,6 +61,48 @@ public class TileManager {
 					String numbers[] = line.split(" ");
 					int num = Integer.parseInt(numbers[col]);
 					mapTileNum[col][row] = num;
+					col++;
+				} // end while
+				
+				if(col == gp.maxWorldCol) {
+					col = 0;
+					row++;
+				} // end if
+				
+			} // end while
+			
+			br.close();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	/**
+	 * Loads overlay for use by draw().
+	 * 
+	 * @param filePath File location that map is currently stored
+	 */
+	public void loadOverlay(String filePath) {
+		
+		try {
+			
+			InputStream is = getClass().getResourceAsStream(filePath);
+			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+			
+			int col = 0;
+			int row = 0;
+			
+			while(col < gp.maxWorldCol && row < gp.maxWorldRow) { //determined by World Settings in GamePanel.java
+				
+				String line = br.readLine();
+				
+				while(col < gp.maxWorldCol) {
+					String numbers[] = line.split(" ");
+					int num = Integer.parseInt(numbers[col]);
+					mapOverlayNum[col][row] = num;
 					col++;
 				} // end while
 				
@@ -149,6 +194,9 @@ public class TileManager {
 		setup(49, "tutorial5", false);
 		setup(50, "tutorial6", false);
 		setup(51, "tutorial7", false);
+		setup(52, "bars", true);
+		setup(53, "wallturnlefttransparent", true);
+		setup(54, "wallturnrighttransparent", true);
 	} // end 
 
 	
@@ -215,4 +263,50 @@ public class TileManager {
 		} // end while
 		
 	} // end draw
+	
+	
+	
+	
+	/**
+	 * Draws overlay tiles on map
+	 * 
+	 * @param g2
+	 */
+	public void drawOverlay(Graphics2D g2) {
+		
+		// Helps position tiles on map
+				int worldCol = 0;
+				int worldRow = 0;
+				
+				// Draws map
+				while(worldCol < gp.maxWorldCol && worldRow < gp.maxWorldRow) { //determined by World Settings in GamePanel.java
+					
+					int tileNum = mapOverlayNum[worldCol][worldRow];
+					
+					//Position of the player's character on screen
+					int worldX = worldCol * gp.tileSize;
+					int worldY = worldRow * gp.tileSize;
+					
+					//Used to draw the tiles where the player will always be shown at the
+					//center of the screen
+					int screenX = worldX - gp.player.worldX + gp.player.screenX; 
+					int screenY = worldY - gp.player.worldY + gp.player.screenY;
+					
+					//Ensures tiles outside the FOV of the player are not drawn 
+					if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX && 
+						worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
+						worldY + gp.tileSize > gp.player.worldY - gp.player.screenY && 
+						worldY - gp.tileSize < gp.player.worldY + gp.player.screenY){
+							g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+						} // end if
+					worldCol++;
+					
+					if(worldCol == gp.maxWorldCol) { // if we've reached end of row
+					worldCol = 0;
+					worldRow++;
+					} // end if
+					
+				} // end while
+		
+	} // end drawOverlay
 }
