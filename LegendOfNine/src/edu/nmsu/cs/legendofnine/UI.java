@@ -11,12 +11,13 @@ import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import com.oracle.webservices.internal.api.message.MessageContext;
-
 import entity.Entity;
 import object.OBJ_Boots;
 import object.OBJ_Cheese;
 import object.OBJ_Heart;
+
+//import com.oracle.webservices.internal.api.message.MessageContext;
+//FIXME not working seemingly
 
 public class UI {
 	
@@ -60,7 +61,7 @@ public class UI {
 		
 		// Load cheese image from OBJ_Cheese
 		OBJ_Cheese cheese = new OBJ_Cheese(gp);
-		cheeseImage = cheese.image;
+		cheeseImage = cheese.down1;
 		
 		playTime = 0;
 

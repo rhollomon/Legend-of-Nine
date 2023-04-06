@@ -30,7 +30,7 @@ public class Main {
 		
 		// Set icon
 		OBJ_Cheese cheese = new OBJ_Cheese(gamePanel);
-		BufferedImage cheeseImage = cheese.image;
+		BufferedImage cheeseImage = cheese.down1;
 		window.setIconImage(cheeseImage);
 		
 		gamePanel.setupGame();
