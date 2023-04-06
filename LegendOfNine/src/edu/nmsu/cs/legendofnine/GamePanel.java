@@ -21,7 +21,7 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	
 	// Screen settings
-	final int originalTileSize = 16; // 16 by 16 tile. FIXME when graphics are updated.
+	final int originalTileSize = 16; // 16 by 16 tile
 	final int scale = 4;                            // Scales up pixel art by 4x
 	public final int tileSize = originalTileSize * scale;  //Actual size of tile is 64x64.
 	final int maxScreenCol = 16;   // Number of tiles that fit on the game screen horizontally

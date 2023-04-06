@@ -275,7 +275,7 @@ public class UI {
 		g2.fillRect(0,0, gp.screenWidth, gp.screenHeight);
 
 		// FONT
-		g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+		g2.setFont(winning_font.deriveFont(Font.BOLD,48F));
 		// TEXT
 		String text = "Legend of Nine";
 
@@ -297,7 +297,7 @@ public class UI {
 		g2.drawImage(gp.player.down1, x, y, gp.tileSize*2, gp.tileSize*2, null);
 
 		// MENU
-		g2.setFont(g2.getFont().deriveFont(Font.BOLD,48F));
+		g2.setFont(pixel_font.deriveFont(Font.BOLD,36F));
 
 		text = "NEW GAME";
 		x = getXforCenteredText(text);
@@ -361,7 +361,8 @@ public class UI {
 		int height = gp.tileSize * 3;
 		drawSubWindow(x,y,width,height);
 
-		g2.setFont(g2.getFont().deriveFont(Font.PLAIN,40F));
+		g2.setFont(pixel_font.deriveFont(Font.PLAIN,36F));
+		g2.setColor(Color.white);
 		x += gp.tileSize;
 		y += gp.tileSize;
 
@@ -383,7 +384,7 @@ public class UI {
 
 		// Text
 		g2.setColor(Color.white);
-		g2.setFont(g2.getFont().deriveFont(32F));
+		g2.setFont(pixel_font.deriveFont(32F));
 
 		int textX = frameX + 20;
 		int textY = frameY + gp.tileSize;
@@ -471,11 +472,13 @@ public class UI {
 	public void drawSubWindow(int x, int y, int width, int height){
 		Color c = new Color(0,0,0, 200); //black, with slight transparency
 		g2.setColor(c);
-		g2.fillRoundRect(x, y, width, height, 35,35);
+		//g2.fillRoundRect(x, y, width, height, 35,35);
+		g2.fillRect(x, y, width+4, height+4);
 		c = new Color(218,165,32); //gold
 		g2.setColor(c);
-		g2.setStroke(new BasicStroke(5)); //defines the width of the border surrounding sub window
-		g2.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 25, 25);
+		g2.setStroke(new BasicStroke(4)); //defines the width of the border surrounding sub window
+		//g2.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 25, 25);
+		g2.drawRect(x+8, y+8, width - 12, height - 12);
 	} // end drawSubWindow
 
 	public int getXforAllignToRightText(String text, int tailX) {
