@@ -14,6 +14,9 @@ public class Sound {
     public Sound() {
 
         soundURL[0] = getClass().getResource("/sound/LON_OW_theme.wav");
+
+        //To be implemented, sound effect for moving cursor while in inventory
+        //soundURL[1];
     }
 
     public void setFile(int i) {

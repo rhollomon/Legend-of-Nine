@@ -12,8 +12,10 @@ import javax.imageio.ImageIO;
 import edu.nmsu.UtilityTool;
 import edu.nmsu.cs.legendofnine.GamePanel;
 import edu.nmsu.cs.legendofnine.KeyHandler;
+import object.OBJ_Cheese;
 import object.OBJ_Shield_Normal;
 import object.OBJ_Sword_Normal;
+import java.util.ArrayList;
 
 public class Player extends Entity{
 	
@@ -25,8 +27,10 @@ public class Player extends Entity{
 	public int numCheese = 0; // # of cheese player has picked up
 
 	public boolean attackCancled = false;
-	
-	
+
+	//Inventory
+	public ArrayList<Entity> inventory = new ArrayList<>();
+	public final int maxInventorySize = 20;
 	
 	/**
 	 * Constructor for Player class
@@ -60,7 +64,7 @@ public class Player extends Entity{
 		setDefaultValues();
 		getPlayerImage();
 		getPlayerAttackImage();
-		
+		setItems();
 	} // end constructor
 	
 	
@@ -92,6 +96,14 @@ public class Player extends Entity{
 		defVal = getDef(); // the total def value is decided by dex and shield
 		
 	} // end setDefaultValues
+
+	//inventory 
+	public void setItems(){
+		inventory.add(currentWeapon);
+		inventory.add(currentShield);
+		inventory.add(new OBJ_Cheese(gp));
+	}
+
 
 	public int getAtk() {
 		return atkVal = strength * currentWeapon.itemAtkVal;

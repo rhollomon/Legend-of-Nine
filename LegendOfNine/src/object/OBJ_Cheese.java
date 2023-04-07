@@ -12,5 +12,6 @@ public class OBJ_Cheese extends Entity{
 
 		name = "Cheese";
 		down1 = setup("/objects/cheese2");
+		description = "[" + name + "]\nOne of the nine fabled cheeses.\nKeep this close.";
 	}
 }
