@@ -294,6 +294,14 @@ public class Player extends Entity{
 			spriteCounter = 0;
 			attacking = false;
 		}
+
+		/*
+		 * there will be more implemented here (possibly)
+		 */
+		
+		if(life <= 0) {
+			gp.gameState = gp.gameOverState;
+		}
 	}
 	
 	/**

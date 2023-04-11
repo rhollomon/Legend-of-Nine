@@ -212,6 +212,16 @@ public class UI {
 			drawInventory();
 		}
 
+		// // Options State
+		// if(gp.gameStae == optionsState) {
+		// 	drawOptionsScreen();	
+		// }
+
+		// Game Over State
+		if(gp.gameStae == gameOverState) {
+			drawGameOverScreen();
+		}
+
 	} // end draw
 	
 	/*
@@ -525,6 +535,39 @@ public class UI {
 				textY += 32;
 			}
 		}
+	}
+
+	public void drawGameOverScreen() {
+		g2.setColor(new Color(0,0,0,150));
+		g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+
+		int x;
+		int y;
+		String text;
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD, 110f));
+
+		text = "Game Over";
+		// Shadow
+		g2.setColor(Color.black);
+		x = getXforCenteredText(text);
+		y = gp.tileSize * 4;
+		g2.drawString(text,x,y);
+		// Main
+		g2.setColor(Color.white);
+		g2.drawString(text,x-4,y-4);
+
+		// Retry
+		g2.setFont(g2.getFont().deriveFont(50f));
+		text = "Retry";
+		x = getXforCenteredText(text);
+		y+=gp.tileSize*4;
+		g2.drawString(text,x,y);
+
+		// Back to the title screen
+		text = "Quit";
+		x=getXforCenteredText(text);
+		y+=55;
+		g2.drawString(text,x,y);
 	}
 
 	public int getItemIndexOnSlot(){
