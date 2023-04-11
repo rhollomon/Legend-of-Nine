@@ -99,11 +99,18 @@ public class Player extends Entity{
 
 	//inventory 
 	public void setItems(){
+
+		inventory.clear();
 		inventory.add(currentWeapon);
 		inventory.add(currentShield);
 		inventory.add(new OBJ_Cheese(gp));
 	}
 
+	public void setDefaultPositions() {
+		worldX = gp.tileSize *23;
+		worldY = gp.tileSize *21;
+		direction = "down";
+	}
 
 	public int getAtk() {
 		return atkVal = strength * currentWeapon.itemAtkVal;
@@ -301,6 +308,7 @@ public class Player extends Entity{
 		
 		if(life <= 0) {
 			gp.gameState = gp.gameOverState;
+			// gp.playSE(i);  i is death sound effect
 		}
 	}
 	

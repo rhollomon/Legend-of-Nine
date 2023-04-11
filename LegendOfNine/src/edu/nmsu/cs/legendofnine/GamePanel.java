@@ -62,7 +62,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int pauseState = 2;
 	public final int dialogueState = 3;
 	public final int characterState = 4;
-	public final int optionsState = 5; // has not been implemented
+	// public final int optionsState = 5; // has not been implemented
 	public final int gameOverState =6;
 	
 	/**
@@ -100,7 +100,22 @@ public class GamePanel extends JPanel implements Runnable{
 	} // end startGameThread
 	
 	
-	
+	public void retry() {
+
+		player.setDefaultPositions();
+		player.life = player.maxlife;
+		aSetter.setNPC();
+		aSetter.setMonster();
+
+	}
+
+	public void restart() {
+
+		player.setDefaultValues();
+		player.setItems();
+	}
+
+
 	/**
 	 * Run method for game
 	 */

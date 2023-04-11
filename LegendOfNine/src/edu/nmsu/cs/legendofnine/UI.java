@@ -213,12 +213,12 @@ public class UI {
 		}
 
 		// // Options State
-		// if(gp.gameStae == optionsState) {
+		// if(gp.gameState == optionsState) {
 		// 	drawOptionsScreen();	
 		// }
 
 		// Game Over State
-		if(gp.gameStae == gameOverState) {
+		if(gp.gameState == gameOverState) {
 			drawGameOverScreen();
 		}
 
@@ -562,12 +562,18 @@ public class UI {
 		x = getXforCenteredText(text);
 		y+=gp.tileSize*4;
 		g2.drawString(text,x,y);
+		if(commandNum == 0) {
+			g2.drawString(">", x-40, y);
+		}
 
 		// Back to the title screen
 		text = "Quit";
 		x=getXforCenteredText(text);
 		y+=55;
 		g2.drawString(text,x,y);
+		if(commandNum == 1) {
+			g2.drawString(">", x-40, y);
+		}
 	}
 
 	public int getItemIndexOnSlot(){

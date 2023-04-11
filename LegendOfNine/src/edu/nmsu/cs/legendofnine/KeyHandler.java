@@ -39,6 +39,14 @@ public class KeyHandler implements KeyListener {
         else if(gp.gameState == gp.characterState) {
             characterState(code);
         }
+        // // Options State
+        // else if(gp.gameState == gp.optionsState) {
+        //     optionsState(code);
+        // }
+        // Game Over State
+        else if(gp.gameState == gp.gameOverState) {
+            gameOverState(code);
+        }
 
     }
 
@@ -143,6 +151,32 @@ public class KeyHandler implements KeyListener {
             if(gp.ui.slotCol != 4){
                 gp.ui.slotCol++;
                 //gp.playSE(1); uncomment when inventory sound has been implemented 
+            }
+        }
+    }
+    public void gameOverState() {
+        if (code == KeyEvent.VK_W) {
+            gp.ui.commandNum--;
+            if(gp.ui.commandNum < 0) {
+                gp.ui.commandNum = 1;
+            }
+            //  gp.playSE(i);  i is index of scrolling sound effect
+        }
+        if (code == KeyEvent.VK_S) {
+            gp.ui.commandNum++;
+            if(gp.ui.commandNum > 1) {
+                gp.ui.commandNum = 0;
+            }
+            //  gp.playSE(i);  i is index of scrolling sound effect
+        }
+        if (code == KeyEvent.VK_ENTER) {
+            if(gp.ui.commandNum == 0) {
+                gp.gameState = gp.playState;
+                gp.retry();
+            }
+            else if(gp.ui.commanndNum == 1) {
+                gp.gameState = gp.titleState;
+                gp.restart();
             }
         }
     }
