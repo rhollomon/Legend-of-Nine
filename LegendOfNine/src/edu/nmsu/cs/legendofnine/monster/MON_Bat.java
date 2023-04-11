@@ -1,4 +1,4 @@
-package edu.nmsu.monster;
+package edu.nmsu.cs.legendofnine.monster;
 
 import java.util.Random;
 

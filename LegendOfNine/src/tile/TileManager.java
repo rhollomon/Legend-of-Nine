@@ -8,8 +8,8 @@ import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
 
-import edu.nmsu.UtilityTool;
 import edu.nmsu.cs.legendofnine.GamePanel;
+import edu.nmsu.cs.legendofnine.UtilityTool;
 
 public class TileManager {
 	

@@ -9,9 +9,9 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import edu.nmsu.UtilityTool;
 import edu.nmsu.cs.legendofnine.GamePanel;
 import edu.nmsu.cs.legendofnine.KeyHandler;
+import edu.nmsu.cs.legendofnine.UtilityTool;
 import object.OBJ_Cheese;
 import object.OBJ_Shield_Normal;
 import object.OBJ_Sword_Normal;

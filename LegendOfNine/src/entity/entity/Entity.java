@@ -1,13 +1,14 @@
 package entity;
 import java.awt.image.BufferedImage;
 import edu.nmsu.cs.legendofnine.GamePanel;
+import edu.nmsu.cs.legendofnine.UtilityTool;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.io.IOException;
-import edu.nmsu.UtilityTool;
+
 import javax.imageio.ImageIO;
 /**
  * Super class for any player, monster, NPC classes. Contains sprite variables.

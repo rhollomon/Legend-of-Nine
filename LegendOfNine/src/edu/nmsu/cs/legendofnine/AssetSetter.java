@@ -3,7 +3,7 @@ package edu.nmsu.cs.legendofnine;
 import object.OBJ_Cheese;
 import object.OBJ_Chest;
 import object.OBJ_Door;
-import edu.nmsu.monster.MON_Bat;
+import edu.nmsu.cs.legendofnine.monster.MON_Bat;
 import entity.NPC_OldMouse;
 import object.OBJ_Boots;
 

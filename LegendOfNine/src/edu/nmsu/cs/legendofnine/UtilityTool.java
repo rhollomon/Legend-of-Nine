@@ -1,4 +1,4 @@
-package edu.nmsu;
+package edu.nmsu.cs.legendofnine;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
