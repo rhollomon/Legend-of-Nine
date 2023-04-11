@@ -106,6 +106,8 @@ public class GamePanel extends JPanel implements Runnable{
 		player.life = player.maxlife;
 		aSetter.setNPC();
 		aSetter.setMonster();
+		player.invincible = false;
+		player.invincibleCounter = 0;
 
 	}
 

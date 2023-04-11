@@ -107,8 +107,8 @@ public class Player extends Entity{
 	}
 
 	public void setDefaultPositions() {
-		worldX = gp.tileSize *23;
-		worldY = gp.tileSize *21;
+		worldX = gp.tileSize *7;
+		worldY = gp.tileSize *3;
 		direction = "down";
 	}
 
@@ -256,6 +256,11 @@ public class Player extends Entity{
 				invincibleCounter = 0;
 			}
 		}
+
+		if(life <= 0) {
+			gp.gameState = gp.gameOverState;
+			// gp.playSE(i);  i is death sound effect
+		}
 	} // end update
 
 	
@@ -306,10 +311,6 @@ public class Player extends Entity{
 		 * there will be more implemented here (possibly)
 		 */
 		
-		if(life <= 0) {
-			gp.gameState = gp.gameOverState;
-			// gp.playSE(i);  i is death sound effect
-		}
 	}
 	
 	/**
