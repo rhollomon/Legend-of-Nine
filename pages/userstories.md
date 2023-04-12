@@ -121,15 +121,41 @@ Acceptance Test: Basic sketches of the terrain for a jumping/combination puzzle 
 
 ## Brock Middleton
 
+## User Story #1: Collision Detection
+
 As a player, I would like to be able to walk into walls without clipping through them and crashing the game thread. (i.e. Collision Detection)
 
 Elaboration: Users should not be able to walk through walls and other solid objects. This is not conducive to a successful game structure, and it also crashes the active game thread when a player walks out of the defined tile-space. Once collision is established, values must be tweaked to account for game models.
 
 Constraints: None
 
-Est. Hours: 2-3 human hrs.
+Est. Hours: 2-3 hrs.
 
 Acceptance Test: Successful collision on all wall structures in the game environment. No clipping of the sprite model or wall model present.
+
+## User Story #2: Title Screen
+
+As a player, I want a title screen to allow a more intuitive interaction process. 
+
+Elaboration: For an improved and streamlined player experience, a title screen is a fundamental addition. 
+
+Constraints: None
+
+Est. Hours: 1-2 hrs. 
+
+Acceptance Test: A functional title screen with the ability, upon launch, to be able to start a new game or exit the game. Possible addition of 'Options' tab in later iterations. 
+
+## User Story #3: Procedural Level Generation
+
+As a developer, I would like to have unqiue elements to each playthrough. 
+
+Elaboration: After we implement each of our room types and give the user the ability to progress fully through the game, I would like to implement a procedural element to level generation so that each playthrough is different than the previous playthroughs
+
+Constraints: In order to implement procedural generation, we must first have our complete set of rooms, or levels, which will be the building blocks of a generated level. 
+
+Est. Hours: 3-5 hrs. 
+
+Acceptance Test: An observable difference in the layout of the game rooms from one game instance to another.
 
 ## Jason Weston
 
