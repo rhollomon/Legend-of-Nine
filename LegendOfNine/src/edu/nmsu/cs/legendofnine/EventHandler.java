@@ -79,7 +79,7 @@ public class EventHandler {
     public void damagePit(int col, int row, int gameState) {
 
         gp.gameState = gameState;
-        // gp.playSE(i) index of being bitten by a dust bunny
+        gp.playSE(1);
         gp.ui.currentDialogue = "You got bitten by a dust bunny!!!";
         gp.player.attackCancled = true;
         gp.player.life -= 1;
@@ -93,7 +93,7 @@ public class EventHandler {
         if(gp.keyH.enterPressed == true) {
             gp.gameState = gameState;
             gp.player.attackCancled = true;
-            // gp.playSE(i) index of healing area sound effect
+            gp.playSE(5);
             gp.ui.currentDialogue = "You have been healed by\n unknown sources";
             gp.player.life = gp.player.maxlife;
             gp.aSetter.setMonster();

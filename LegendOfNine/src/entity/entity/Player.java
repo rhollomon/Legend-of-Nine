@@ -229,7 +229,6 @@ public class Player extends Entity{
 			}
 
 			if(keyH.enterPressed == true && attackCancled == false) {
-				// gp.playSE(i); index i is the sound effect for attacking
 				attacking = true;
 				spriteCounter = 0;
 			}
@@ -259,7 +258,7 @@ public class Player extends Entity{
 
 		if(life <= 0) {
 			gp.gameState = gp.gameOverState;
-			// gp.playSE(i);  i is death sound effect
+			gp.playSE(2);
 		}
 	} // end update
 
@@ -326,7 +325,7 @@ public class Player extends Entity{
 
 			switch (objectName) {
 				case "Cheese":
-					//gp.playSE(1); // make sure cheese sound is index 1
+					gp.playSE(5);
 					numCheese++; 
 					gp.obj[i] = null;
 
@@ -334,20 +333,20 @@ public class Player extends Entity{
 				break;
 
 				case "Chest":
-					//gp.playSE(2); // make sure chest sound is index 2
+					gp.playSE(7);
 										
 					if(numCheese < 2) {
 						gp.ui.addMessage("You need "+(2-numCheese)+" more cheese", null);
 					} else {
 						gp.ui.gameFinished = true;
 						gp.stopMusic();
-						//TODO play winning sound effect here
+						gp.playSE(3);
 					}
 						
 				break;
 
 				case "Door":
-					//gp.playSE(3); // make sure door sound is index 3
+					gp.playSE(4);
 					//if (numCheese > 0) { //TODO make it a key instead
 						gp.obj[i] = null;
 						//numCheese--;
@@ -356,7 +355,7 @@ public class Player extends Entity{
 				break;
 
 				case "Boots": 
-					//gp.playSE(4); // make sure powerup sound is index 4
+					gp.playSE(5);
 					speed+=1;
 					gp.obj[i]=null;
 					
@@ -397,7 +396,7 @@ public class Player extends Entity{
 
 			if(invincible == false) {
 
-				// TODO gp.playSE(i); where i is the index of monster hit sound effect
+				gp.playSE(6);
 
 				int damage = gp.monster[i].atkVal - defVal; {
 					if(damage < 0) {
@@ -423,7 +422,7 @@ public class Player extends Entity{
 					}
 				}
 				
-				// TODO gp.playSE(i); where i is the index of monster damaged sound effect
+				gp.playSE(1); 
 				gp.monster[i].life -= damage;
 				gp.ui.addMessage(damage + " damage!",null);
 
@@ -447,7 +446,7 @@ public class Player extends Entity{
 		
 		if(exp >= nextLevelExp) {
 
-			// gp.playSE(i); where i is the index of level up sound
+			gp.playSE(3);
 			level++;
 			nextLevelExp = nextLevelExp+14;
 			maxlife += 2;

@@ -132,25 +132,25 @@ public class KeyHandler implements KeyListener {
         if(code == KeyEvent.VK_W){
             if(gp.ui.slotRow != 0){
                 gp.ui.slotRow--;
-                //gp.playSE(1); uncomment when inventory sound has been implemented 
+                gp.playSE(8);
             }
         }
         if(code == KeyEvent.VK_A){
             if(gp.ui.slotCol != 0){
                 gp.ui.slotCol--;
-                //gp.playSE(1); uncomment when inventory sound has been implemented 
+                gp.playSE(8); 
             }
         }
         if(code == KeyEvent.VK_S){
             if(gp.ui.slotRow != 3){
                 gp.ui.slotRow++;
-                //gp.playSE(1); uncomment when inventory sound has been implemented 
+                gp.playSE(8); 
             }
         }
         if(code == KeyEvent.VK_D){
             if(gp.ui.slotCol != 4){
                 gp.ui.slotCol++;
-                //gp.playSE(1); uncomment when inventory sound has been implemented 
+                gp.playSE(8); 
             }
         }
     }
@@ -160,14 +160,14 @@ public class KeyHandler implements KeyListener {
             if(gp.ui.commandNum < 0) {
                 gp.ui.commandNum = 1;
             }
-            //  gp.playSE(i);  i is index of scrolling sound effect
+            gp.playSE(8); 
         }
         if (code == KeyEvent.VK_S) {
             gp.ui.commandNum++;
             if(gp.ui.commandNum > 1) {
                 gp.ui.commandNum = 0;
             }
-            //  gp.playSE(i);  i is index of scrolling sound effect
+            gp.playSE(8);  
         }
         if (code == KeyEvent.VK_ENTER) {
             if(gp.ui.commandNum == 0) {

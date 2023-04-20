@@ -120,7 +120,7 @@ public class Entity {
 		if(this.type == 2 && contactPlayer == true) {
 			if(gp.player.invincible == false) {
 				// we give damage
-				// TODO gp.playSE(i) where i is the index of the damage sound effect
+				gp.playSE(1);
 
 				int damage = atkVal - gp.player.defVal;
 				if(damage < 0) {
