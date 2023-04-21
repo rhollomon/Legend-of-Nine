@@ -544,7 +544,7 @@ public class UI {
 		int x;
 		int y;
 		String text;
-		g2.setFont(g2.getFont().deriveFont(Font.BOLD, 110f));
+		g2.setFont(winning_font.deriveFont(Font.BOLD,84F));
 
 		text = "Game Over";
 		// Shadow
@@ -557,7 +557,7 @@ public class UI {
 		g2.drawString(text,x-4,y-4);
 
 		// Retry
-		g2.setFont(g2.getFont().deriveFont(50f));
+		g2.setFont(pixel_font.deriveFont(48F));
 		text = "Retry";
 		x = getXforCenteredText(text);
 		y+=gp.tileSize*4;
