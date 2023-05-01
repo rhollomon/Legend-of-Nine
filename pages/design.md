@@ -7,7 +7,7 @@ permalink: design
 # Design Page for Legend of Nine
 
 ## Architecture Diagram 
-![UML Diagram v0.2](/LegendOfNine/res//arch/uml_v0.2_apr2723.pdf)
+![UML Diagram v0.2](/LegendOfNine/src/res/arch/uml_v0.2_apr2723.pdf)
 
 ## Description
 
@@ -15,7 +15,7 @@ The architecure diagram for our Java application depicts the various classes and
 
 Throughout development, we have had a focus on modularity in order to streamline the implementation of various functionaltiies without impeding the work of other team members. As such, we utlized constructor injection in many of our class constructors in order to cleanly map our dependencies accross the project. 
 
-The primary class of the project is 'GamePanel'. Per the architecture diagram, we can see that msot of our specific-use classes are dependent on the GamePanel class. Here is a detailed description of the role of each class, along with some their significant behaviors. For a full list of attributes and behaviors, see the architecture diagram. ![UML Diagram v0.2](/LegendOfNine/res//arch/uml_v0.2_apr2723.pdf)
+The primary class of the project is 'GamePanel'. Per the architecture diagram, we can see that msot of our specific-use classes are dependent on the GamePanel class. Here is a detailed description of the role of each class, along with some their significant behaviors. For a full list of attributes and behaviors, see the architecture diagram. ![UML Diagram v0.2](/LegendOfNine/src/res/arch/uml_v0.2_apr2723.pdf)
 
     - Class Name : *GamePanel*
 
