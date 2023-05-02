@@ -58,8 +58,9 @@ public class Player extends Entity{
 		solidArea.width = 32;
 		solidArea.height = 32;
 		
-		attackArea.width = 36;
-		attackArea.height = 36;
+		// Attack Area 
+		// attackArea.width = 36;
+		// attackArea.height = 36;
 
 		setDefaultValues();
 		getPlayerImage();
@@ -113,6 +114,7 @@ public class Player extends Entity{
 	}
 
 	public int getAtk() {
+		attackArea = currentWeapon.attackArea;
 		return atkVal = strength * currentWeapon.itemAtkVal;
 	}
 
@@ -361,6 +363,20 @@ public class Player extends Entity{
 					
 					gp.ui.addMessage("Picked up boots! (+1 speed)", "boots");
 					break;
+
+				default : 
+					String text;
+					// Items that exist here, must be items that are stored in the inventory
+					if(inventory.size() != maxInventorySize){
+						inventory.add(gp.obj[i]);
+						//gp.playSE(1); //sound effect for item pickup
+						text = "Picked up a " + gp.obj[i].name + "!";
+					}else{
+						text = "Inventory Full! Cannot hold anymore items.";
+					}
+					gp.ui.addMessage(text, null);
+					gp.obj[i]=null;
+
 			} // end switch
 		} // end if
 	} // end pickupObject
@@ -460,6 +476,37 @@ public class Player extends Entity{
 		}
 	}
 	
+	/**
+	 * Cursor used within inventory menu to select item.
+	 * 
+	 */
+	public void selectItem(){
+
+		int itemIndex = gp.ui.getItemIndexOnSlot();
+
+		if(itemIndex < inventory.size()){
+			// Selecting an item, slot is not vacant
+
+			Entity selectedItem = inventory.get(itemIndex);
+
+
+			if(selectedItem.type == type_sword){
+				currentWeapon = selectedItem;
+				atkVal = getAtk();
+			}
+			if(selectedItem.type == type_shield){
+				currentShield = selectedItem;
+				defVal = getDef();
+			}
+			if(selectedItem.type == type_consumable){
+				if(this == null)
+				selectedItem.use(this);
+				inventory.remove(itemIndex);
+			}
+		}
+	}
+
+
 	
 	/**
 	 * Sets player sprite based on direction, and animates extra frames while walking.

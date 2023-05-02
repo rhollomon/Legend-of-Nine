@@ -153,6 +153,10 @@ public class KeyHandler implements KeyListener {
                 gp.playSE(8); 
             }
         }
+
+        if(code == KeyEvent.VK_ENTER){
+            gp.player.selectItem();
+        }
     }
     public void gameOverState(int code) {
         if (code == KeyEvent.VK_W) {
