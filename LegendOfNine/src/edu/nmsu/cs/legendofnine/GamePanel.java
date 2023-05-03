@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import entity.Entity;
 import entity.Player;
 import tile.TileManager;
+import environment.EnvironmentManager;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -47,7 +48,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public EventHandler eHandler = new EventHandler(this);
 	Thread gamThread;
 	public UI ui = new UI(this);
-
+	EnvironmentManager eManager = new EnvironmentManager(this);
 	// Entity and Object
 	public Player player = new Player(this, keyH); // Make new player from Player class
 	public Entity obj[] = new Entity[10];
@@ -85,6 +86,10 @@ public class GamePanel extends JPanel implements Runnable{
 		aSetter.setObject();
 		aSetter.setNPC();
 		aSetter.setMonster();
+		
+		// setup environment manager for lighting effects
+		eManager.setup();
+		
 		playMusic(0);
 		gameState = titleState; // we start at TITLE 
 	}
@@ -254,6 +259,9 @@ public class GamePanel extends JPanel implements Runnable{
 			}
 			// EMPTY ENTITY LIST
 			entityList.clear();
+			
+			// ENVIRONMENT
+			eManager.draw(g2);
 			
 			// draw map ABOVE player
 			tileM.drawOverlay(g2);
