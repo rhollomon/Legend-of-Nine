@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 /**
@@ -53,6 +54,10 @@ public class Entity {
 	public boolean collision = false;
 	boolean attacking = false;
 
+	// Inventory
+	public ArrayList<Entity> inventory = new ArrayList<>();
+	public final int maxInventorySize = 20;
+
 	// CHARACTER STATUS
 	//public int type; // 0 = player, 1 = npc, 2 = monster
 	public String name;
@@ -73,6 +78,7 @@ public class Entity {
 	public int itemAtkVal;
 	public int itemDefVal;
 	public String description = "";
+	public int price;
 
 	// Type
 	public int type; // 0 = player, 1 = npc, 2 = monster

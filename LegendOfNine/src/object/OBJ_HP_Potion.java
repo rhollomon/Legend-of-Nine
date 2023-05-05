@@ -16,6 +16,7 @@ public class OBJ_HP_Potion extends Entity{
 		name = "Healing Potion";
 		down1 = setup("/objects/hp_potion");
 		description = "[" + name + "]\nRestores lost health by " + value + " hp.\n";
+		price=1;
 	}
 
 	// Handles actions involved after consuming item.

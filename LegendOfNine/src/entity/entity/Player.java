@@ -28,9 +28,7 @@ public class Player extends Entity{
 
 	public boolean attackCancled = false;
 
-	//Inventory
-	public ArrayList<Entity> inventory = new ArrayList<>();
-	public final int maxInventorySize = 20;
+	//Inventory - moved to parent class
 	
 	/**
 	 * Constructor for Player class
@@ -482,7 +480,7 @@ public class Player extends Entity{
 	 */
 	public void selectItem(){
 
-		int itemIndex = gp.ui.getItemIndexOnSlot();
+		int itemIndex = gp.ui.getItemIndexOnSlot(gp.ui.playerSlotCol , gp.ui.playerSlotRow);
 
 		if(itemIndex < inventory.size()){
 			// Selecting an item, slot is not vacant

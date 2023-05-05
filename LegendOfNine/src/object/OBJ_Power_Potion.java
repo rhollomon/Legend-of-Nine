@@ -13,5 +13,6 @@ public class OBJ_Power_Potion extends Entity{
 		name = "Power Potion";
 		down1 = setup("/objects/power_potion");
 		description = "[" + name + "]\nIncreases damage dealt for a \nshort time.\n";
+		price=1;
 	}
 }

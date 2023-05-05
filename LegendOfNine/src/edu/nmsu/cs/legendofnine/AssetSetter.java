@@ -5,6 +5,7 @@ import object.OBJ_Chest;
 import object.OBJ_Door;
 import edu.nmsu.cs.legendofnine.monster.MON_Bat;
 import entity.NPC_OldMouse;
+import entity.NPC_MerchantMouse;
 import object.OBJ_Boots;
 
 // Potions
@@ -74,6 +75,10 @@ public class AssetSetter {
 		gp.npc[0] = new NPC_OldMouse(gp);
 		gp.npc[0].worldX = gp.tileSize * 2;
 		gp.npc[0].worldY = gp.tileSize * 2;
+
+		gp.npc[1] = new NPC_MerchantMouse(gp);
+		gp.npc[1].worldX = gp.tileSize * 4;
+		gp.npc[1].worldY = gp.tileSize * 4;
 	}
 
 	public void setMonster() {

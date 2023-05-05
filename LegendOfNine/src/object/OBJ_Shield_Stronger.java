@@ -13,6 +13,7 @@ public class OBJ_Shield_Stronger extends Entity {
         down1 = setup("/objects/fancyshield");
         itemDefVal = 10;
         description = "[" + name + "]\nShield meant to block incoming\nattacks. Defends against more \npowerful attacks.";
+        price=2;
     }
     
 }

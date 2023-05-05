@@ -1,4 +1,5 @@
 package edu.nmsu.cs.legendofnine;
+import entity.Entity;
 
 public class EventHandler {
 
@@ -45,6 +46,7 @@ public class EventHandler {
         if(canTouchEvent == true) {
             if(hit(1,1,"left") == true) { damagePit(1,1,gp.dialogueState); } // if true, event happens
             if(hit(2,1,"up") == true) { healingPool(gp.dialogueState); }
+            if(hit(1,1,"up") == true) { speak(gp.npc[1]); }
         }
 
     }
@@ -97,6 +99,15 @@ public class EventHandler {
             gp.ui.currentDialogue = "You have been healed by\n unknown sources";
             gp.player.life = gp.player.maxlife;
             gp.aSetter.setMonster();
+        }
+    }
+
+    public void speak(Entity entity) {
+
+        if(gp.keyH.enterPressed == true) {
+            gp.gameState = gp.dialogueState;
+            gp.player.attackCancled = true;
+            entity.speak();
         }
     }
 

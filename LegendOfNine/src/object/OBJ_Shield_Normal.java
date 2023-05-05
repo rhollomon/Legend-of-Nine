@@ -13,6 +13,7 @@ public class OBJ_Shield_Normal extends Entity {
         down1 = setup("/objects/shield_blue");
         itemDefVal = 1;
         description = "[" + name + "]\nShield meant to block incoming\nattacks. Ineffective against more\npowerful attacks.";
+        price=1;
     }
     
 }
