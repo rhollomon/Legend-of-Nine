@@ -74,8 +74,8 @@ public class Player extends Entity{
 	public void setDefaultValues() {
 		
 		// Set spawn coordinates
-		worldX = gp.tileSize * 7;
-		worldY = gp.tileSize * 3;
+		worldX = gp.tileSize * 27;
+		worldY = gp.tileSize * 27;
 		
 		speed = 4;
 		direction = "down";
@@ -106,8 +106,8 @@ public class Player extends Entity{
 	}
 
 	public void setDefaultPositions() {
-		worldX = gp.tileSize *7;
-		worldY = gp.tileSize *3;
+		worldX = gp.tileSize *27;
+		worldY = gp.tileSize *27;
 		direction = "down";
 	}
 

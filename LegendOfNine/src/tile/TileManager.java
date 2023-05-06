@@ -26,13 +26,13 @@ public class TileManager {
 		
 		this.gp = gp;
 		
-		tile = new Tile[55]; // Currently supports 55 different types of tiles
+		tile = new Tile[100]; // Currently supports 100 different types of tiles
 		mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow]; //determined by World Settings in GamePanel.java
 		mapOverlayNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 		
 		getTileImage();
-		loadMap("/maps/hubarea.txt");
-		loadOverlay("/maps/huboverlay.txt");
+		loadMap("/maps/overworld_map.txt");
+		//loadOverlay("/maps/huboverlay.txt");
 		
 	} // end constructor
 	
@@ -197,6 +197,17 @@ public class TileManager {
 		setup(52, "bars", true);
 		setup(53, "wallturnlefttransparent", true);
 		setup(54, "wallturnrighttransparent", true);
+		
+		setup(55, "kitchentile1", false);
+		setup(56, "kitchentile2", false);
+		setup(57, "kitchentopwall", true);
+		setup(58, "kitchenbottomwall", true);
+		setup(59, "kitchenleftwall", true);
+		setup(60, "kitchenrightwall", true);
+		setup(61, "kitchenwallbottomleft", true);
+		setup(62, "kitchenwallbottomright", true);
+		setup(63, "kitchenwalltopleft", true);
+		setup(64, "kitchenwalltopright", true);
 	} // end 
 
 	

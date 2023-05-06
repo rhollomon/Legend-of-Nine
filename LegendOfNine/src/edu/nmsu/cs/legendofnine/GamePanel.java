@@ -31,9 +31,9 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int screenWidth = tileSize * maxScreenCol;  // 1024 pixels
 	public final int screenHeight = tileSize * maxScreenRow; // 768 pixels
 
-	//World settings (19 x 17 map)
-	public final int maxWorldCol = 19; 
-	public final int maxWorldRow = 17;
+	//World settings (60 x 60 map)
+	public final int maxWorldCol = 60; 
+	public final int maxWorldRow = 60;
 
 	// Frames per second
 	int FPS = 60;
@@ -67,6 +67,10 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int gameOverState =6;
 	public final int tradeState = 7;
 	
+	
+	
+	
+	
 	/**
 	 * Constructor for GamePanel
 	 */
@@ -77,6 +81,8 @@ public class GamePanel extends JPanel implements Runnable{
 		this.addKeyListener(keyH);
 		this.setFocusable(true);
 	} // end constructor
+	
+	
 	
 	
 	
@@ -106,6 +112,11 @@ public class GamePanel extends JPanel implements Runnable{
 	} // end startGameThread
 	
 	
+	
+	
+	/*
+	 * Allows player to restart after dying
+	 */
 	public void retry() {
 
 		player.setDefaultPositions();
@@ -117,6 +128,9 @@ public class GamePanel extends JPanel implements Runnable{
 
 	}
 
+	
+	
+	
 	public void restart() {
 
 		player.setDefaultValues();
@@ -265,7 +279,7 @@ public class GamePanel extends JPanel implements Runnable{
 			eManager.draw(g2);
 			
 			// draw map ABOVE player
-			tileM.drawOverlay(g2);
+			//tileM.drawOverlay(g2);
 
 			// UI
 			ui.draw(g2);

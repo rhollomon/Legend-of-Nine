@@ -29,13 +29,18 @@ public class AssetSetter {
 	public void setObject() {
 		
 		gp.obj[0] = new OBJ_Cheese(gp);
-		gp.obj[0].worldX = 10 * gp.tileSize;
-		gp.obj[0].worldY = 3 * gp.tileSize; 
+		gp.obj[0].worldX = 54 * gp.tileSize;
+		gp.obj[0].worldY = 31 * gp.tileSize; 
 		
 		gp.obj[1] = new OBJ_Cheese(gp);
-		gp.obj[1].worldX = 1 * gp.tileSize;
-		gp.obj[1].worldY = 3 * gp.tileSize;
+		gp.obj[1].worldX = 57 * gp.tileSize;
+		gp.obj[1].worldY = 6 * gp.tileSize;
 		
+		gp.obj[4] = new OBJ_Boots(gp);
+		gp.obj[4].worldX = 39 * gp.tileSize;
+		gp.obj[4].worldY = 35 * gp.tileSize;
+		
+		/*
 		gp.obj[2] = new OBJ_Door(gp);
 		gp.obj[2].worldX = 5 * gp.tileSize;
 		gp.obj[2].worldY = 5 * gp.tileSize;
@@ -43,10 +48,6 @@ public class AssetSetter {
 		gp.obj[3] = new OBJ_Chest(gp);
 		gp.obj[3].worldX = 5 * gp.tileSize;
 		gp.obj[3].worldY = 1 * gp.tileSize;
-
-		gp.obj[4] = new OBJ_Boots(gp);
-		gp.obj[4].worldX = 3 * gp.tileSize;
-		gp.obj[4].worldY = 1 * gp.tileSize;
 		
 		//Items implemented in game alongside inventory system
 		gp.obj[5] = new OBJ_HP_Potion(gp);
@@ -68,66 +69,66 @@ public class AssetSetter {
 		gp.obj[9] = new OBJ_Shield_Stronger(gp);
 		gp.obj[9].worldX = 2 * gp.tileSize;
 		gp.obj[9].worldY = 1 * gp.tileSize;
+		*/
 
 	}
 
 	public void setNPC(){
+
 		gp.npc[0] = new NPC_OldMouse(gp);
-		gp.npc[0].worldX = gp.tileSize * 2;
-		gp.npc[0].worldY = gp.tileSize * 2;
+		gp.npc[0].worldX = gp.tileSize * 25;
+		gp.npc[0].worldY = gp.tileSize * 28;
 
 		gp.npc[1] = new NPC_MerchantMouse(gp);
-		gp.npc[1].worldX = gp.tileSize * 4;
-		gp.npc[1].worldY = gp.tileSize * 4;
+		gp.npc[1].worldX = gp.tileSize * 29;
+		gp.npc[1].worldY = gp.tileSize * 35;
+		
 	}
 
 	public void setMonster() {
 
 		int i=0;
+
 		gp.monster[i] = new MON_Bat(gp);
-		gp.monster[i].worldX = 12 * gp.tileSize;
+		gp.monster[i].worldX = 50 * gp.tileSize;
+		gp.monster[i].worldY = 28 * gp.tileSize;
+		i++;
+		
+		gp.monster[i] = new MON_Bat(gp);
+		gp.monster[i].worldX = 49 * gp.tileSize;
+		gp.monster[i].worldY = 29 * gp.tileSize;
+		i++;
+
+		gp.monster[i] = new MON_Bat(gp);
+		gp.monster[i].worldX = 49 * gp.tileSize;
+		gp.monster[i].worldY = 28 * gp.tileSize;
+		i++;
+
+		gp.monster[i] = new MON_Bat(gp);
+		gp.monster[i].worldX = 50 * gp.tileSize;
+		gp.monster[i].worldY = 29 * gp.tileSize;
+		i++;
+
+		gp.monster[i] = new MON_Bat(gp);
+		gp.monster[i].worldX = 50 * gp.tileSize;
+		gp.monster[i].worldY = 10 * gp.tileSize;
+		i++;
+		
+		gp.monster[i] = new MON_Bat(gp);
+		gp.monster[i].worldX = 50 * gp.tileSize;
+		gp.monster[i].worldY = 11 * gp.tileSize;
+		i++;
+		
+		gp.monster[i] = new MON_Bat(gp);
+		gp.monster[i].worldX = 50 * gp.tileSize;
 		gp.monster[i].worldY = 12 * gp.tileSize;
 		i++;
 		
 		gp.monster[i] = new MON_Bat(gp);
-		gp.monster[i].worldX = 12 * gp.tileSize;
-		gp.monster[i].worldY = 13 * gp.tileSize;
-		i++;
-
-		gp.monster[i] = new MON_Bat(gp);
-		gp.monster[i].worldX = 13 * gp.tileSize;
-		gp.monster[i].worldY = 13 * gp.tileSize;
-		i++;
-
-		gp.monster[i] = new MON_Bat(gp);
-		gp.monster[i].worldX = 14 * gp.tileSize;
-		gp.monster[i].worldY = 13 * gp.tileSize;
-		i++;
-
-		gp.monster[i] = new MON_Bat(gp);
-		gp.monster[i].worldX = 14 * gp.tileSize;
+		gp.monster[i].worldX = 50 * gp.tileSize;
 		gp.monster[i].worldY = 14 * gp.tileSize;
 		i++;
 
-		gp.monster[i] = new MON_Bat(gp);
-		gp.monster[i].worldX = 14 * gp.tileSize;
-		gp.monster[i].worldY = 15 * gp.tileSize;
-		i++;
-
-		gp.monster[i] = new MON_Bat(gp);
-		gp.monster[i].worldX = 11 * gp.tileSize;
-		gp.monster[i].worldY = 13 * gp.tileSize;
-		i++;
-
-		gp.monster[i] = new MON_Bat(gp);
-		gp.monster[i].worldX = 15 * gp.tileSize;
-		gp.monster[i].worldY = 13 * gp.tileSize;
-		i++;
-
-		gp.monster[i] = new MON_Bat(gp);
-		gp.monster[i].worldX = 12 * gp.tileSize;
-		gp.monster[i].worldY = 10 * gp.tileSize;
-		i++;
 
 	}
 
