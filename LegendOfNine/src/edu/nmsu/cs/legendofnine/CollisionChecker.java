@@ -36,6 +36,9 @@ public class CollisionChecker {
         int entityRightCol = entityRightWorldX/gp.tileSize;
         int entityTopRow = entityTopWorldY/gp.tileSize;
         int entityBottomRow = entityBottomWorldY/gp.tileSize;
+        
+        int maxWorldRow = gp.maxWorldRow;
+        int maxWorldCol = gp.maxWorldCol;
 
         int tileNum1, tileNum2;
 
@@ -43,15 +46,19 @@ public class CollisionChecker {
         case "up":
             // Predict which tile player is moving to by subtracting speed
             entityTopRow = (entityTopWorldY - entity.speed)/gp.tileSize;
-            tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
-            tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
-
+            if(entityTopRow < 0) entityTopRow = 0;
+            if(entityTopRow >= maxWorldRow) entityTopRow = maxWorldRow - 1;
+	        tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
+	        tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
+            
             if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
                 entity.collisionOn = true;
             }
             break;
         case "down":
             entityBottomRow = (entityBottomWorldY + entity.speed)/gp.tileSize;
+            if(entityBottomRow < 0) entityBottomRow = 0;
+            if(entityBottomRow >= maxWorldRow) entityBottomRow = maxWorldRow - 1;
             tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
             tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
 
@@ -61,6 +68,8 @@ public class CollisionChecker {
             break;
         case "left":
             entityLeftCol = (entityLeftWorldX - entity.speed)/gp.tileSize;
+            if(entityLeftCol < 0) entityLeftCol = 0;
+            if(entityLeftCol >= maxWorldCol) entityLeftCol = maxWorldCol - 1;
             tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
             tileNum2 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
 
@@ -70,6 +79,8 @@ public class CollisionChecker {
             break;
         case "right":
             entityRightCol = (entityRightWorldX + entity.speed)/gp.tileSize;
+            if(entityRightCol < 0) entityRightCol = 0;
+            if(entityRightCol >= maxWorldCol) entityRightCol = maxWorldCol - 1;
             tileNum1 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
             tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
 
