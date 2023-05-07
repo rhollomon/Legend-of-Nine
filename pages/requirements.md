@@ -35,7 +35,10 @@ The overall environment is a game window that allows a user to play the game and
 
 ## 2.2 Domain Model with Description
 
-Display and describe your domain model. TBD 
+The domain model fo our project can be seen here.
+![UML Diagram v0.2](/LegendOfNine/src/res/arch/uml_v0.2_apr2723.pdf)
+
+For further information on design implementation, see the design page. 
 
 ## 2.3 Product Functions (general)
 
