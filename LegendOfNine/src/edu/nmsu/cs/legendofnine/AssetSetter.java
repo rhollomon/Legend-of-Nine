@@ -40,36 +40,35 @@ public class AssetSetter {
 		gp.obj[4].worldX = 39 * gp.tileSize;
 		gp.obj[4].worldY = 35 * gp.tileSize;
 		
-		/*
-		gp.obj[2] = new OBJ_Door(gp);
-		gp.obj[2].worldX = 5 * gp.tileSize;
-		gp.obj[2].worldY = 5 * gp.tileSize;
+		//gp.obj[2] = new OBJ_Door(gp);
+		//gp.obj[2].worldX = 5 * gp.tileSize;
+		//gp.obj[2].worldY = 5 * gp.tileSize;
 		
 		gp.obj[3] = new OBJ_Chest(gp);
-		gp.obj[3].worldX = 5 * gp.tileSize;
-		gp.obj[3].worldY = 1 * gp.tileSize;
+		gp.obj[3].worldX = 25 * gp.tileSize;
+		gp.obj[3].worldY = 31 * gp.tileSize;
 		
 		//Items implemented in game alongside inventory system
-		gp.obj[5] = new OBJ_HP_Potion(gp);
-		gp.obj[5].worldX = 6 * gp.tileSize;
-		gp.obj[5].worldY = 1 * gp.tileSize;
+		//gp.obj[5] = new OBJ_HP_Potion(gp);
+		//gp.obj[5].worldX = 6 * gp.tileSize;
+		//gp.obj[5].worldY = 1 * gp.tileSize;
 
-		gp.obj[6] = new OBJ_Power_Potion(gp);
-		gp.obj[6].worldX = 7 * gp.tileSize;
-		gp.obj[6].worldY = 1 * gp.tileSize;
+		//gp.obj[6] = new OBJ_Power_Potion(gp);
+		//gp.obj[6].worldX = 7 * gp.tileSize;
+		//gp.obj[6].worldY = 1 * gp.tileSize;
 
-		gp.obj[7] = new OBJ_Speed_Potion(gp);
-		gp.obj[7].worldX = 8 * gp.tileSize;
-		gp.obj[7].worldY = 1 * gp.tileSize;
+		//gp.obj[7] = new OBJ_Speed_Potion(gp);
+		//gp.obj[7].worldX = 8 * gp.tileSize;
+		//gp.obj[7].worldY = 1 * gp.tileSize;
 
-		gp.obj[8] = new OBJ_Excalibur(gp);
-		gp.obj[8].worldX = 1 * gp.tileSize;
-		gp.obj[8].worldY = 1 * gp.tileSize;
+		//gp.obj[8] = new OBJ_Excalibur(gp);
+		//gp.obj[8].worldX = 1 * gp.tileSize;
+		//gp.obj[8].worldY = 1 * gp.tileSize;
 
-		gp.obj[9] = new OBJ_Shield_Stronger(gp);
-		gp.obj[9].worldX = 2 * gp.tileSize;
-		gp.obj[9].worldY = 1 * gp.tileSize;
-		*/
+		//gp.obj[9] = new OBJ_Shield_Stronger(gp);
+		//gp.obj[9].worldX = 2 * gp.tileSize;
+		//gp.obj[9].worldY = 1 * gp.tileSize;
+		
 
 	}
 
