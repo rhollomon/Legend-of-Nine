@@ -32,11 +32,12 @@ The overall environment is a game window that allows a user to play the game and
 ## 2.2 Domain Model with Description
 
 The domain model of our project can be seen here.
-![UML Diagram v0.2](Legend-of-Nine/LegendOfNine/src/res/arch/uml_v0.2.png)
 
-<img src="Legend-of-Nine/LegendOfNine/src/res/arch/uml_v0.2.png"
+<img src="../LegendofNine/src/res/arch/uml_v0.2.png"
      alt="UML Diagram"
-     style="float: left; margin-right: 10px;" />
+     width="400"
+     height="500"
+     />
 
 For further information on design implementation, see the design page. 
 
