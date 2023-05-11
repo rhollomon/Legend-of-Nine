@@ -194,3 +194,15 @@ Constraints: Depending on how we create rooms and allow for different game state
 Est. Hours: 1 human hr.
 
 Acceptance Test: All objects are meaningfully placed and allow for a linear gameplay. 
+
+### User Story #4: Environmental lighting
+
+As a developer, I want to add a gradient lighting feature that makes our game more atmospheric.
+
+Elaboration: Develop a lighting feature that represents the field of view in a dark room.
+
+Constraints: Some rooms may be brighter than others, but the lighting feature stays the same as long as there is no chage in game state.
+
+Est. Hours: 1 human hr.
+
+Acceptance Test: Lighting feature displayed as a gradient circle around the player with a radius that's half of the screens length.
