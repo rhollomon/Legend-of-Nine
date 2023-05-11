@@ -31,7 +31,7 @@ The overall environment is a game window that allows a user to play the game and
 
 ## 2.2 Domain Model with Description
 
-The domain model fo our project can be seen here.
+The domain model of our project can be seen here.
 ![UML Diagram v0.2](/LegendOfNine/src/res/arch/uml_v0.2_apr2723.pdf)
 
 For further information on design implementation, see the design page. 
@@ -52,6 +52,8 @@ Constraints for this sytem include the amount of sprites that can be present on 
 
 Our product is a java game using the javax.swing.JFrame library which can be compiled using any java interpreter with an updated JDK. 
 
+Our product utilizaes Gradle, which is a functional requirement. 
+
 # 3. Functional Requirements
 
 https://github.com/rhollomon/Legend-of-Nine/blob/main/pages/userstories.md
@@ -65,15 +67,33 @@ User must be running JDK version 17 and have the latest version of gradle downlo
 
 ## 4.2 Performance Requirements
 
-Describe your product's performance needs. Then list specific requirements using item numbers as NF.4.2.X.
+    1. Gameplay
+        4.2.1 Process user input in timely manner. 
+        4.2.2 Quick response time for in-game processes. 
+        4.2.3 Error-free and seamless experience. 
+
+    2. Deliverable (INP)
+        4.2.4 Project is able to be installed and deployed to end-users, error-free.
 
 ## 4.3 Design Constraints
 
-Describe external requirements that will constrain your design choices. Then list specific requirements using item numbers as NF.4.3.X.
+    1. Software Constraints
+        4.3.1 Installation of Java Development Kit and Gradle is required to build and run project. 
+        4.3.2 Latest version of Java Development Kit (v.20) incompatible with latest version of Gradle (8). JDK 17 or earlier required for builds with Gradle 8. 
+
+    2. Hardware Constraints - No significant hardware constraints. 
 
 ## 4.4 Quality Requirements
 
-What quality expectations do your users have? Is your system life-critical? Describe such issues, then list specific requirements using item numbers as NF.4.4.X.
+    1. Usability
+        4.4.1 Concise and informative documentation. 
+        4.4.2 Easy to maintain and update. 
+        4.4.3 Intuitive design and interface. 
+    
+    2. End-to-end Progression (INP)
+        4.4.4 Multiple explorable rooms with enemy sprites and loot.
+        4.4.5 Items from previous rooms required to progress to next room.
+        4.4.6 Final room with a 'boss' enemy. 
 
 ## 4.5 Other Requirements
  
