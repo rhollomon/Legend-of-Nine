@@ -24,11 +24,11 @@ of the various components tested, system tests to verify the pieces interacted a
     center tracker of the player.
 
     Object Placement/Interaction:
-    Items or interactable entities appear throughout the world. Some we want the player to simply walk through to trigger an event
-    such as boost to stats or adding the item to the inventory while others we want to enforce collision detection on such as a 
-    chest. Testing object placement and interaction required creating pickups in the world for the player to walk through then 
-    disappear and trigger an effect. Chests were placed to verify a player could not walk through a chest but could interact 
-    with them by pressing "Enter" to see if an event triggered such as a "Congratulations" text.
+    Items or interactable entities appear throughout the world. Some we want the player to simply walk through to trigger an 
+    event such as boost to stats or adding the item to the inventory while others we want to enforce collision detection on
+    such as a chest. Testing object placement and interaction required creating pickups in the world for the player to walk
+    through then disappear and trigger an effect. Chests were placed to verify a player could not walk through a chest but
+    could interact with them by pressing "Enter" to see if an event triggered such as a "Congratulations" text.
 
     Inventory:
     The intended design for the inventory included displaying the players currency, currently equipped weapon/shield, consumable 
