@@ -11,10 +11,10 @@ of the various components tested, system tests to verify the pieces interacted a
 ## 1. Component Testing
 
     Collision Detection: 
-    Collision Detection places a restraint on the player's ability to move around the world such as preventing the player from walking
-    through walls, animate objects, and NPCS. Testing involved creating a series of entities we wanted the player to walk through such 
-    as items we can pick up and entities we wanted to prevent the player from walking through and validating their intended 
-    functionality. 
+    Collision Detection places a restraint on the player's ability to move around the world such as preventing the player from
+    walking through walls, animate objects, and NPCS. Testing involved creating a series of entities we wanted the player to 
+    walk through such as items we can pick up and entities we wanted to prevent the player from walking through and validating
+    their intended functionality. 
 
     Camera: 
     Our game's camera wanted the player to always be the focus of attention and thus we decided to have the player remain always 
