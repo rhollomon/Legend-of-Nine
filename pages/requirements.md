@@ -14,8 +14,6 @@ The purpose of this project is to develop an understanding of game creation as w
 
 ### 1.2 Scope of Product
 
-A short description of your product's scope (what it includes and what it does not include). Part of your problem statement might be useful here, but focus on the scope of the product.
-
 This product is a simple game design that will include game features such as movement, object interaction, and collision mechanics. This product will not include multiplayer capabilities.
 ### 1.3 Acronyms, Abbreviations, Definitions
 
@@ -29,8 +27,6 @@ https://www.youtube.com/playlist?list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq
 
 ### 2.1 Context of Product
 
-Context or environment that your product will be in.
-
 The overall environment is a game window that allows a user to play the game and interact with the UI.  
 
 ## 2.2 Domain Model with Description
@@ -42,8 +38,6 @@ For further information on design implementation, see the design page.
 
 ## 2.3 Product Functions (general)
 
-Basic overview of the capabilities of your product. This is not your list of functional requirements, but an overview. Part of your problem statement might be good here.
-
 Player, NPC characters, objects, and tiles are represented as flat, 2D sprites. The player is able to use W, A, S, and D keys to move up, left, down, and right(respectively). Objects can be interacted with while tiles can be traversed unless they represent a wall. Player can be affected by certain objects and can use objects to achieve tasks. Player can also be attacked by NPC characters or can attack NPC characters.  
 ## 2.4 User Characteristics and Expectations
 
@@ -52,17 +46,13 @@ Describe your users and their abilities.
 User is able to take control of the playable character and should have the following actuator: a hand capable of pressing the W, A, S, and D keys, and the following sensor: Eyes to perceive the screen. User can traverse the game in order to pickup enough pieces of cheese to complete the game.   
 ## 2.5 Constraints
 
-Describe any constraints on your system. TBD 
+Constraints for this sytem include the amount of sprites that can be present on the screen during gameplay. Currently, we allow 10 objects to be present for gameplay at 60fps. This would also depend on the machine the user is using to run our game. Right now, The user also must have gradle installed and working with our build in order to run the game. In the future, we hope to implement our game as an executable.
 
 ## 2.6 Assumptions and Dependencies
-
-Does your system depend on external software packages? System assumptions? If so, describe them.
 
 Our product is a java game using the javax.swing.JFrame library which can be compiled using any java interpreter with an updated JDK. 
 
 # 3. Functional Requirements
-
-In a standard requirements document, you would have a LONG list of functional requirements here. You should put a link to your user story page here.
 
 https://github.com/rhollomon/Legend-of-Nine/blob/main/pages/userstories.md
 
@@ -70,7 +60,8 @@ https://github.com/rhollomon/Legend-of-Nine/blob/main/pages/userstories.md
 
 ## 4.1 External Interface Requirements (User,Hardware,Software,Communications)
 
-Describe what kinds of interfaces your product has, and what they do. Then list specific requirements using item numbers as NF.4.1.X.
+Our product has a user interface that draws tiles to display the title screen, pause screen, inventory screen, dialogue boxes, and stats of the player. 
+User must be running JDK version 17 and have the latest version of gradle downloaded.
 
 ## 4.2 Performance Requirements
 
@@ -85,10 +76,9 @@ Describe external requirements that will constrain your design choices. Then lis
 What quality expectations do your users have? Is your system life-critical? Describe such issues, then list specific requirements using item numbers as NF.4.4.X.
 
 ## 4.5 Other Requirements
-
-Anything else you need to say. Use item numbers NF.4.5.X.
+ 
 
 # 5. Appendices
 
-Include external documents that describe domain or constraints or any necessary information. Use URL links if possible.
+https://github.com/rhollomon/Legend-of-Nine/tree/main/pages
 
