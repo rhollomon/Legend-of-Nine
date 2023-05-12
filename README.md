@@ -22,6 +22,18 @@ Advice for common issues with Gradle:
 - Ensure tools.jar is visible in your Java installation folder. This may require installing JDK8 and moving the tools.jar file from the lib directory into your JRE's lib directory.
 - Ensure Gradle is visible on your build path, and its file location is set in your computer's environmental variables.
 
+# Documentation
+
+- [Requirements](/pages/requirements.md) page includes descriptions for several aspects of our project, including but not limited to the projects purpose, details on implementation and dependencies, and performance requirements. 
+
+- [Architecture](/pages/architecture.md) page contains a description on the architecture of our project, including a UML diagram of our project structure.
+
+- [Design](/pages/design.md) page goes into more detail on the architecture of our project, including brief explainations of the purpose of each class. 
+
+- [Test Report](/pages/testreport.md) page goes into detail on what our requirements were, and are, for testing new features, including component, system, and acceptance testing. 
+
+- [User Stores](/pages/userstories.md) page details all of the functional requirements for our project, as well as desired functions. 
+
 # Repository Navigation 
 - .gradle
     Build file

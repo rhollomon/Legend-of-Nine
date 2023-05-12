@@ -72,33 +72,45 @@ User must be running JDK version 17 and have the latest version of gradle downlo
 
 ## 4.2 Performance Requirements
 
-    1. Gameplay
-        4.2.1 Process user input in timely manner. 
-        4.2.2 Quick response time for in-game processes. 
-        4.2.3 Error-free and seamless experience. 
+1. Gameplay
 
-    2. Deliverable (INP)
-        4.2.4 Project is able to be installed and deployed to end-users, error-free.
+    4.2.1 Process user input in timely manner. 
+
+    4.2.2 Quick response time for in-game processes. 
+
+    4.2.3 Error-free and seamless experience. 
+
+2. Deliverable (INP)
+
+    4.2.4 Project is able to be installed and deployed to end-users, error-free.
 
 ## 4.3 Design Constraints
 
-    1. Software Constraints
-        4.3.1 Installation of Java Development Kit and Gradle is required to build and run project. 
-        4.3.2 Latest version of Java Development Kit (v.20) incompatible with latest version of Gradle (8). JDK 17 or earlier required for builds with Gradle 8. 
+1. Software Constraints
 
-    2. Hardware Constraints - No significant hardware constraints. 
+    4.3.1 Installation of Java Development Kit and Gradle is required to build and run project. 
+
+    4.3.2 Latest version of Java Development Kit (v.20) incompatible with latest version of Gradle (8). JDK 17 or earlier required for builds with Gradle 8. 
+
+2. Hardware Constraints - No significant hardware constraints. 
 
 ## 4.4 Quality Requirements
 
-    1. Usability
-        4.4.1 Concise and informative documentation. 
-        4.4.2 Easy to maintain and update. 
-        4.4.3 Intuitive design and interface. 
+1. Usability
+
+    4.4.1 Concise and informative documentation. 
+
+    4.4.2 Easy to maintain and update. 
+
+    4.4.3 Intuitive design and interface. 
     
-    2. End-to-end Progression (INP)
-        4.4.4 Multiple explorable rooms with enemy sprites and loot.
-        4.4.5 Items from previous rooms required to progress to next room.
-        4.4.6 Final room with a 'boss' enemy. 
+2. End-to-end Progression (INP)
+
+    4.4.4 Multiple explorable rooms with enemy sprites and loot.
+
+    4.4.5 Items from previous rooms required to progress to next room.
+
+    4.4.6 Final room with a 'boss' enemy. 
 
 ## 4.5 Other Requirements
  
