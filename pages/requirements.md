@@ -33,7 +33,7 @@ The overall environment is a game window that allows a user to play the game and
 
 The domain model of our project can be seen here.
 
-<img src="../LegendOfNine/src/res/arch/uml_v0.2.png"
+<img src="res/uml_v0.2.png"
      alt="UML Diagram"
      width="400"
      height="500"
